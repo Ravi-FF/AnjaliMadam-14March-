@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create Element</title>
+</head>
+
+<body>
+
+    <script>
+        let element = document.createElement("h1")
+        // element.textContent = "Hello Welcome to Js"
+        element.textContent = "Hello Welcome to Js"
+        let btn = document.createElement("button")
+        btn.textContent = "Click me"
+        btn.addEventListener("click", () => {
+            element.style.color = 'red'
+        })
+        document.body.append(element)
+        document.body.append(btn)
+    </script>
+</body>
+ 
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>heading 1</h1>
+    <h1>heading 2</h1>
+    <h1>heading 3</h1>
+    <h1>heading 4</h1>
+    <h1>heading 5</h1>
+    <h1>heading 6</h1>
+    <h1>heading 7</h1>
+    <h1>heading 8</h1>
+    <h1>heading 9</h1>
+    <h1>heading 9</h1>
+    <h1>heading 9</h1>
+    <h1>heading 9</h1>
+    <script>
+        let items = document.querySelectorAll("h1")
+        for (let index = 0; index < items.length; index++) {
+            if (index % 2 == 0) {
+                items[index].style.color = "red"
+            } else {
+                items[index].style.color = "blue"
+            }
+
+        }
+    </script>
+</body>
+
+</html>

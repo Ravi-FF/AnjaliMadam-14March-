@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    table{
+        width: 50%;
+        margin: 20px 0;
+    }
+</style>
+
+<body>
+    <input type="text" id="input-1">
+    <input type="text" id="input-2">
+    <button>click</button>
+    <table border="">
+        <th>Name</th>
+        <th>subject</th>
+    </table>
+    <script>
+        let table = document.querySelector("table")
+        document.querySelector("button").addEventListener("click", () => {
+            let inputFirst = document.querySelector("#input-1")
+            let inputSecond = document.querySelector("#input-2")
+            let tr = document.createElement("tr");
+            let td1 = document.createElement("td")
+            td1.textContent = inputFirst.value
+            let td2 = document.createElement("td")
+            td2.textContent = inputSecond.value
+            tr.append(td1, td2)
+            table.append(tr)
+            inputFirst.value = ""
+            inputSecond.value = ""
+        })
+    </script>
+</body>
+
+</html>
