@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="type here">
+    <button>Click me</button>
+    <ul></ul>
+    <script>
+        let myarr = [];
+        document.querySelector("button").addEventListener("click", () => {
+            let inputValue = document.querySelector("input")
+            myarr.push(inputValue.value)
+            inputValue.value = ""
+            renderdata()
+        })
+        function renderdata() {
+            document.querySelector("ul").innerText = ""
+            myarr.forEach((elm) => {
+                let li = document.createElement("li")
+                li.innerText = elm
+                document.querySelector("ul").append(li)
+            })
+
+        }
+    </script>
+</body>
+
+</html>
