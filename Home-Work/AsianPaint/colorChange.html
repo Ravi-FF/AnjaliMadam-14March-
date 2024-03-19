@@ -20,14 +20,19 @@
         }
 
         .container {
-            width: 80%;
-            padding: 15px 0;
             display: flex;
             justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin: 0 auto;
-            text-align: center;
+            position: relative;
+            transition: background-color 0.5s ease-in-out;
+            background: cover/center no-repeat;
+            height: 100vh;
+        }
+
+        .container img,.bg-images .img-box img{
+            width: 100%;
+            cursor: pointer;
+            height: 100%;
+            object-fit: cover;
         }
 
         input {
@@ -58,7 +63,6 @@
         }
 
         .color_Div {
-            /* margin-top: 5px; */
             margin-bottom: 5px;
             cursor: pointer;
             padding: 8px 10px;
@@ -77,58 +81,76 @@
             cursor: pointer;
         }
 
-        .color_Div:hover {
+        .color_Div:hover,.img-box:hover {
             transform: scale(1.1);
         }
 
         .colorWrapper {
             display: flex;
-            gap: 30px;
             flex-wrap: wrap;
+            gap: 30px;
             justify-content: center;
-            align-items: center;
         }
 
         .colorName {
             font-size: 13px;
         }
 
-        .bg-main {
-            width: 100%;
-            position: relative;
-            transition: background-color 0.5s ease-in-out;
-            height: 100vh;
-            background: url(./bg.jpg) no-repeat center/cover;
-        }
-
-        h1 {
-            position: absolute;
-            top: 25%;
-            left: 8%;
-            font-size: 45px;
-        }
-
         .colorParent {
             display: flex;
             justify-content: center;
             position: relative;
-            margin-top: 20px;
-            align-items: center;
+            margin-top: 40px;
+            text-align: center;
             flex-direction: column;
         }
 
         .input_wrapper {
+            position: absolute;
+            text-align: center;
+            top: 10px;
             margin-bottom: 10px;
+        }
+
+        .bg-images {
+            right: 10px;
+            top: 10px;
+            position: absolute;
+        }
+
+        .bg-images .img-box {
+            width: 200px;
+            height: 120px;
+            margin-bottom: 10px;
+            border: 2px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.8s ease;
         }
     </style>
 
 </head>
 
 <body>
-    <div class="bg-main">
-        <h1>Asian Paints colour</h1>
-        <div class="container">
+    <div class="container">
+        <div class="bg-images">
+            <div class="img-box">
+                <img src="./img1.jpg" alt="">
+            </div>
+            <div class="img-box">
+                <img src="./img2.jpg" alt="">
+            </div>
+            <div class="img-box">
+                <img src="./img3.jpg" alt="">
+            </div>
+            <div class="img-box">
+                <img src="./img4.jpg" alt="">
+            </div>
+            <div class="img-box">
+                <img src="./img5.jpg" alt="">
+            </div>
         </div>
+        <img src="./bg.jpg" alt="">
     </div>
     <script>
         let containerBox = document.querySelector(".container")
@@ -179,7 +201,10 @@
                 color_box.style.background = DisplayInput.value
                 inputDiv.append(colorDiv_Wrapper)
                 color_box.addEventListener("click", () => {
-                    document.querySelector(".bg-main").style.backgroundColor = colorName.innerText
+                    if (containerBox.style.backgroundImage) {
+                        containerBox.style.removeProperty("background-image");
+                    }
+                    containerBox.style.backgroundColor = colorName.innerText
                     DisplayInput.value = ""
                 })
                 document.querySelector(".colorWrapper").append(colorDivParent)
@@ -193,6 +218,12 @@
         function removeElement(element) {
             element.parentElement.remove();
         }
+        let allBg = document.querySelectorAll(".img-box img")
+        allBg.forEach((bg) => {
+            bg.addEventListener("click", (event) => {
+                containerBox.style.backgroundImage = `Url("${event.target.src}")`
+            })
+        })
     </script>
 </body>
 
