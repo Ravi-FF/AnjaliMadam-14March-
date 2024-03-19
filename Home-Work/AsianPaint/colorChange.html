@@ -58,8 +58,7 @@
         }
 
         .color_Div {
-            text-align: start;
-            margin-top: 20px;
+            /* margin-top: 5px; */
             margin-bottom: 5px;
             cursor: pointer;
             padding: 8px 10px;
@@ -71,15 +70,20 @@
             outline: 1px solid black;
         }
 
+        .removeClr {
+            position: absolute;
+            top: -15px;
+            right: -20px;
+            cursor: pointer;
+        }
+
         .color_Div:hover {
             transform: scale(1.1);
-            /* border: 1px solid black; */
         }
 
         .colorWrapper {
             display: flex;
             gap: 30px;
-            text-align: center;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -107,10 +111,17 @@
         .colorParent {
             display: flex;
             justify-content: center;
+            position: relative;
+            margin-top: 20px;
             align-items: center;
             flex-direction: column;
         }
+
+        .input_wrapper {
+            margin-bottom: 10px;
+        }
     </style>
+
 </head>
 
 <body>
@@ -134,14 +145,12 @@
         inputDiv.append(inputBox, button)
         containerBox.append(inputDiv)
         let DisplayInput = document.querySelector("input")
+        let colorDiv_Wrapper = document.createElement("div")
+        colorDiv_Wrapper.className = "colorWrapper"
         button.addEventListener("click", () => {
             if (DisplayInput.value == "") {
                 alert("Please Enter Color Name")
                 return
-            }
-            // creatediv 
-            if (!document.querySelector(".colorWrapper")) {
-                CreateParent()
             }
             let exists = false
             if (document.querySelector(".colorName")) {
@@ -158,12 +167,18 @@
                 colorDivParent.className = "colorParent"
                 let color_box = document.createElement("div")
                 color_box.className = "color_Div";
+                let removeClr = document.createElement("span")
+                removeClr.className = "removeClr"
+                removeClr.setAttribute("onclick", "removeElement(this)")
+                removeClr.textContent = "x"
+                colorDivParent.append(removeClr)
                 let colorName = document.createElement("div")
                 colorName.className = "colorName"
                 colorName.textContent = DisplayInput.value
                 colorDivParent.append(color_box, colorName)
                 color_box.style.background = DisplayInput.value
-                colorDivParent.addEventListener("click", () => {
+                inputDiv.append(colorDiv_Wrapper)
+                color_box.addEventListener("click", () => {
                     document.querySelector(".bg-main").style.backgroundColor = colorName.innerText
                     DisplayInput.value = ""
                 })
@@ -175,10 +190,8 @@
             }
         })
 
-        function CreateParent() {
-            let colorDiv_Wrapper = document.createElement("div")
-            colorDiv_Wrapper.className = "colorWrapper"
-            inputDiv.append(colorDiv_Wrapper)
+        function removeElement(element) {
+            element.parentElement.remove();
         }
     </script>
 </body>
