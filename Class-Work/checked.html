@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: cursive;
+            user-select: none;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+        }
+
+        input,
+        label {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .container {
+            width: 90%;
+            /* border: 1px solid red; */
+            background-color: white;
+            position: relative;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            padding: 30px;
+        }
+
+        h1 {
+            position: absolute;
+            right: 50px;
+            font-size: 50px;
+            color: navy;
+            top: 30px;
+        }
+
+        .container div {
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        input {
+            margin-right: 10px;
+        }
+
+        span {
+            color: red;
+        }
+
+        body {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="margin-bottom: 20px;"><input type="checkbox" id="checkedAll"><label for="checkedAll" style="color: brown; font-weight: bold;"> Select All
+            </label></div>
+        <div><input type="checkbox" class="subject" id="subject-1"><label for="subject-1"> Java </label></div>
+        <div><input type="checkbox" class="subject" id="subject-2"><label for="subject-2"> C++ </label></div>
+        <div><input type="checkbox" class="subject" id="subject-3"><label for="subject-3"> Python </label></div>
+        <div><input type="checkbox" class="subject" id="subject-4"><label for="subject-4"> Flutter </label></div>
+        <div><input type="checkbox" class="subject" id="subject-5"><label for="subject-5"> PHP</label></div>
+        <div><input type="checkbox" class="subject" id="subject-6"><label for="subject-6"> React</label></div>
+        <div><input type="checkbox" class="subject" id="subject-7"><label for="subject-7"> Ruby</label></div>
+        <div><input type="checkbox" class="subject" id="subject-8"><label for="subject-8"> TypeScript</label></div>
+        <div><input type="checkbox" class="subject" id="subject-9"><label for="subject-9"> Rust</label></div>
+        <div><input type="checkbox" class="subject" id="subject-10"><label for="subject-10"> Css</label></div>
+        <h2>your Selected languages: <span></span></h2>
+        <h1>0</h1>
+    </div>
+</body>
+<script>
+    let selectAll = document.querySelector('#checkedAll')
+    let arr = []
+    let Subjects = document.querySelectorAll(".subject")
+    let h2 = document.querySelector("span")
+    let h1 = document.querySelector("h1")
+    selectAll.addEventListener("change", () => {
+        Subjects.forEach((elm) => {
+            let element = elm.nextSibling.textContent
+            if (selectAll.checked) {
+                if (!arr.includes(element)) {
+                    arr.push(element)
+                    renderData(arr)
+                }
+            } else {
+                arr.pop(element)
+                renderData(arr)
+            }
+            elm.checked = selectAll.checked
+        })
+    })
+
+
+
+    // checkSubject is select or not 
+    Subjects.forEach((elm) => {
+        elm.addEventListener("change", () => {
+            let nextElm = elm.nextSibling.textContent;
+            if (elm.checked) {
+                if (!arr.includes(nextElm)) {
+                    arr.unshift(nextElm)
+                    renderData(arr)
+                }
+            } else {
+                let element = arr.indexOf(nextElm)
+                arr.splice(element, 1)
+                renderData(arr)
+            }
+
+            let allChecked = true;
+            Subjects.forEach((subject) => {
+                if (!subject.checked) {
+                    allChecked = false;
+                }
+            });
+            selectAll.checked = allChecked;
+        });
+    });
+    function renderData(data) {
+        h2.innerHTML = data
+        h1.innerHTML = data.length
+    }
+</script>
+
+</html>

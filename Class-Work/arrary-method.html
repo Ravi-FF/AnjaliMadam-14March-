@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = ["c", "c++", "java", "script"]
+        // Syntax = arr.splice(start-value,remove-value,newadd-value)
+        // splice always return h new arrary
+
+        let remove = arr.splice(1, 2)
+        let edit = arr.splice(3, 1, "ravi", 1222, 2333, 4445, 555)
+        console.log(arr)
+        console.log(remove)
+        console.log(edit)
+
+        // slice hamara ek se thik ek element km tk chlata h and return me nre array return krta h
+        console.log(arr.slice(1, 4))
+
+        console.log("pop() is using for remove last element of an array");
+        console.log(arr, arr.pop(), arr)
+
+        console.log("unshift for add element at the begging of arrary")
+        console.log(arr, arr.unshift("hello"), arr)
+
+        console.log("shift for remove element at the begging of arrary");
+        console.log(arr, arr.shift(), arr) 
+
+        // filter 
+        let filterArr=[2,3,4,5,6,7] 
+        let filterElm = filterArr.filter((item)=>item<6)
+        console.log(filterElm)
+    </script>
+</body>
+
+</html>

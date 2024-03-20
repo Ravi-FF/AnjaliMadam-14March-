@@ -13,6 +13,7 @@
     <ul></ul>
     <script>
         let myarr = [];
+        let myUl = document.querySelector("ul")
         document.querySelector("button").addEventListener("click", () => {
             let inputValue = document.querySelector("input")
             // myarr.push(inputValue.value)
@@ -21,11 +22,16 @@
             renderdata()
         })
         function renderdata() {
-            document.querySelector("ul").innerText = ""
-            myarr.forEach((elm) => {
+            myUl.innerText = "" 
+            myarr.forEach((elm,index) => {
                 let li = document.createElement("li")
                 li.innerText = elm
-                document.querySelector("ul").append(li)
+                myUl.append(li)
+                li.addEventListener("click", (event) => {
+                    myarr = myarr.filter(element=>element!==elm)
+                //   myarr.splice(index,1)
+                    renderdata()    
+                })
             })
 
         }
