@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" class="Name" placeholder="enter name"> <br>
+    <input type="text" class="subject" placeholder="subject"> <br>
+    <button>Submit</button>
+    <ul></ul>
+    <script>
+        // let arr = ["c", "c++", "java", "mern"];       
+        // console.log(arr[0], arr[1], arr[2]);
+
+        // let obj1 = {
+        //     Firstname: "ravi",
+        //     Lastname: "suthar",
+        // }
+        // let obj2 = {
+        //     Firstname: "ravi",
+        //     Lastname: "suthar",
+        // }
+        // console.log(obj2.Firstname);
+
+        // let arr1 = []
+        // let objstore = {}
+
+        // arr1.push(obj1, obj2)
+        // console.log(arr1);
+
+        let myobject = {}
+        let myul = document.querySelector("ul")
+        document.querySelector("button").addEventListener("click", () => {
+            let nameValue = document.querySelector(".Name")
+            let subjectName = document.querySelector(".subject")
+
+            myobject["name"] = nameValue.value
+            myobject["subject"] = subjectName.value
+            displayData()
+        })
+        function displayData() {
+            for (let key in myobject) {
+                let li = document.createElement("li")
+                li.textContent = key + " " + myobject[key]
+                myul.append(li)
+            }
+        }
+    </script>
+</body>
+
+</html>

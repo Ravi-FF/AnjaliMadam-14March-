@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local storage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: cursive;
+            text-transform: capitalize;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background-color: whitesmoke;
+            text-align: center;
+            padding: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+
+        input {
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            width: 400px;
+            padding: 10px 20px;
+        }
+
+        button[type='submit'] {
+            background-color: navy;
+            padding: 5px 20px;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            border: none;
+            color: white;
+        }
+
+        td {
+            padding: 5px 0;
+        }
+
+        .removebtn {
+            background-color: brown;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 20px;
+            cursor: pointer;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <input type="text" class="first-name" placeholder="Enter first Name" required> <br>
+            <input type="text" class="last-name" placeholder="Enter last Name" required> <br>
+            <input type="text" class="subject-name" placeholder="Enter subject Name" required><br>
+            <button type="submit">Submit Form</button>
+        </form>
+        <div class="tableDiv"></div>
+    </div>
+    <script>
+        let form = document.querySelector("form")
+        let firstName = document.querySelector(".first-name")
+        let lastName = document.querySelector(".last-name")
+        let subjectName = document.querySelector(".subject-name")
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+            let getLSdata = JSON.parse(localStorage.getItem("firstname")) || []
+            let setdata = true
+            for (const iterator of getLSdata) {
+                if (iterator.firstname == firstName.value || iterator.lastname == lastName.value || iterator.subject ==
+                    subjectName.value) {
+                    setdata = false
+                }
+            }
+            if (setdata == false) {
+                alert("Please check value")
+            } else {
+                getLSdata.push(
+                    {
+                        firstname: firstName.value,
+                        lastname: lastName.value,
+                        subject: subjectName.value
+                    })
+                    localStorage.setItem("firstname", JSON.stringify(getLSdata))
+            }
+            displayData()
+            firstName.value = ""
+            lastName.value = ""
+            subjectName.value = ""
+        })
+
+        let displayData = () => {
+            let getLSdata = JSON.parse(localStorage.getItem("firstname")) || []
+            let table = ''
+            table = `<table border>
+                <tr><th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Subject Name</th>
+                    <th>remove Item</th></tr>`
+            getLSdata.forEach((element, i) => {
+                table +=
+                    `<tr>
+            <td>${element.firstname}</td>
+            <td>${element.lastname}</td>
+            <td>${element.subject}</td>
+            <td><button class="removebtn" onclick="removeFun(${i})">RomoveItem</button></td>
+            </tr>`
+            })
+            table += "</table>"
+            document.querySelector(".tableDiv").innerHTML = table
+        }
+        displayData()
+        function removeFun(index, x) {
+            let getLSdata = JSON.parse(localStorage.getItem("firstname")) || []
+            getLSdata.splice(index, 1)
+            localStorage.setItem("firstname", JSON.stringify(getLSdata))
+            console.log(x);
+            displayData()
+        }
+    </script>
+</body>
+
+</html>
