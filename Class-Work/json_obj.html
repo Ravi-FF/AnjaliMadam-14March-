@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json and object</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-align: center;
+        text-transform: capitalize;
+        user-select: none;
+    }
+
+    button {
+        cursor: pointer;
+        border: none;
+        font-size: 15px;
+        color: white;
+        border-radius: 6px;
+    }
+
+    body {
+        background-color: whitesmoke;
+    }
+
+    form {
+        margin: 30px auto;
+        padding: 30px 35px;
+        width: 30%;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    }
+
+    button[type="submit"] {
+        padding: 7px 30px;
+        background-color: navy;
+    }
+
+    input {
+        width: 100%;
+        font-size: 15px;
+        border-radius: 5px;
+        border: 1px solid black;
+        height: 35px;
+        text-align: start;
+        padding: 0px 10px;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .wrapper {
+        margin: 20px auto;
+        position: relative;
+        width: 70%;
+    }
+
+    td,
+    tr,
+    th {
+        border: 2px solid black;
+        padding: 8px 0;
+    }
+
+    .clear_all {
+        background-color: red;
+        padding: 4px 20px;
+        position: absolute;
+        right: -40px;
+        top: -40px;
+    }
+</style>
+
+<body>
+    <form>
+        <input type="text" id="nameid" placeholder="your name" required> <br> <br>
+        <input type="text" id="subjectid" placeholder="subject" required> <br> <br>
+        <input type="text" id="cityid" placeholder="city" required> <br> <br>
+        <button type="submit">submit</button>
+    </form>
+    <div class="wrapper">
+        <button class="clear_all">Clear All</button>
+        <table>
+            <thead>
+                <th>id</th>
+                <th>name</th>
+                <th>subject</th>
+                <th>city</th>
+                <th colspan="2">action</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    let obj = { name: "ravi", course: "front-end" }
+    // JSON.stringify = to convert a obj into a json formate 
+    let json_str = JSON.stringify(obj)
+    console.log(json_str);
+
+    // JSON.parse = to convert a json str to normal js obj 
+    let normal_obj = JSON.parse(json_str)
+    console.log(normal_obj);
+
+    let form = document.querySelector("form")
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault()
+        let nameInput = document.querySelector("#nameid");
+        let subjectInput = document.querySelector("#subjectid");
+        let cityInput = document.querySelector("#cityid");
+        let getLocalData = JSON.parse(localStorage.getItem("student")) || [];
+        let dataId = getLocalData.length + 1
+        let obj = {
+            id: dataId,
+            name: nameInput.value,
+            subject: subjectInput.value,
+            city: cityInput.value,
+        }
+        getLocalData.push(obj)
+        localStorage.setItem("student", JSON.stringify(getLocalData))
+        displayData()
+    })
+    function displayData() {
+        let getLocalData = JSON.parse(localStorage.getItem("student")) || [];
+        let tbody = document.querySelector("tbody")
+        tbody.innerHTML = " "
+        for (let index = 0; index < getLocalData.length; index++) {
+            let data = getLocalData[index]
+            tbody.innerHTML +=
+                `<tr>
+               <td>${data.id}</td>
+               <td>${data.name}</td>
+               <td>${data.subject}</td>
+               <td>${data.city}</td>
+            </tr>
+        `
+        }
+    }
+    displayData()
+    document.querySelector(".clear_all").addEventListener("click", () => {
+        localStorage.clear()
+        displayData()
+        form.reset()
+    })
+</script>
+
+</html>
