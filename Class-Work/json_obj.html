@@ -77,6 +77,11 @@
         right: -40px;
         top: -40px;
     }
+
+    button {
+        background-color: black;
+        padding: 8px;
+    }
 </style>
 
 <body>
@@ -136,16 +141,39 @@
         let tbody = document.querySelector("tbody")
         tbody.innerHTML = " "
         for (let index = 0; index < getLocalData.length; index++) {
-            let data = getLocalData[index]
-            tbody.innerHTML +=
-                `<tr>
-               <td>${data.id}</td>
-               <td>${data.name}</td>
-               <td>${data.subject}</td>
-               <td>${data.city}</td>
-            </tr>
-        `
+            let row = tbody.insertRow()
+            let cell0 = row.insertCell(0)
+            let cell1 = row.insertCell(1)
+            let cell2 = row.insertCell(2)
+            let cell3 = row.insertCell(3)
+            let cell4 = row.insertCell(4)
+            let cell5 = row.insertCell(5)
+            cell0.textContent = getLocalData[index].id
+            cell1.textContent = getLocalData[index].name
+            cell2.textContent = getLocalData[index].subject
+            cell3.textContent = getLocalData[index].city
+            cell4.innerHTML = `<button data-id="${getLocalData[index].id}" class="edit">Edit</button>`
+            cell5.innerHTML = `<button data-id="${getLocalData[index].id}" class='delete'>delete</button>`
+            //     let data = getLocalData[index]
+            //     tbody.innerHTML +=
+            //         `<tr>
+            //        <td>${data.id}</td>
+            //        <td>${data.name}</td>
+            //        <td>${data.subject}</td>
+            //        <td>${data.city}</td>
+            //     </tr>
+            // `
         }
+        let btn = document.querySelectorAll(".delete")
+        btn.forEach(elm => {
+            elm.addEventListener("click", (e) => {
+                let data = e.target.getAttribute("data-id")
+                let localdata = JSON.parse(localStorage.getItem("student")) || []
+                localdata = localdata.filter((item) => Number(data) !== item.id)
+                localStorage.setItem("student", JSON.stringify(localdata))
+                displayData()
+            })
+        })
     }
     displayData()
     document.querySelector(".clear_all").addEventListener("click", () => {

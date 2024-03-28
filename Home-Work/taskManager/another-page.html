@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task Manager Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        .form-control,
+        .form-check-input {
+            box-shadow: none !important;
+        }
+
+        .form-check-label {
+            cursor: pointer;
+        }
+
+        form {
+            background: linear-gradient(45deg, rgba(29, 224, 153, 0.8), rgba(29, 200, 205, 0.8));
+        }
+
+        body {
+            background-color: whitesmoke;
+        }
+
+        .delete {
+            right: 20px;
+            height: 30px;
+            width: 30px;
+            top: 15px;
+        }
+
+        .main {
+            /* background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)); */
+            background: linear-gradient(to right, #A1C4FD, #C2E9FB);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container pt-5">
+        <div class="row justify-content-between align-items-start row-gap-4">
+            <div class="col-lg-5">
+                <form action="" class=" border p-4 shadow bg-white rounded-3">
+                    <h4 class="text-center text-white">Task Manager Detail</h4>
+                    <div class=" mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Task Title</label>
+                        <input type="text" class="form-control" id="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Task Description</label>
+                        <textarea class="form-control" id="Description" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Developer Name</label>
+                        <input type="password" class="form-control" id="DeveloperName" required>
+                    </div>
+                    <div class="mb-3">
+                        <div> <label for="exampleInputPassword1" class="form-label">Task Completion Status</label></div>
+                        <div class="form-check">
+                            <div class="point">
+                                <input type="checkbox" class="form-check-input" id="statusData" required>
+                                <label class="form-check-label" for="statusData">Success</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Due Date</label>
+                        <input type="date" class="form-control" id="Date" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Add Card</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-7 p-0 ps-lg-5">
+                <div class="text-end mb-3 pe-3">
+                    <button class="all_Del btn btn-danger">Delete All</button>
+                </div>
+                <div class=" show_Data"></div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        document.querySelector("form").addEventListener("submit", (event) => {
+            event.preventDefault()
+            const title = document.querySelector("#title")
+            const Description = document.querySelector("#Description")
+            const statusData = document.querySelector("#statusData")
+            const DeveloperName = document.querySelector("#DeveloperName")
+            const Date = document.querySelector("#Date")
+            let get_data = JSON.parse(localStorage.getItem("Task_detail")) || []
+            get_data.push({
+                // id: get_data.length + 1,
+                title: title.value,
+                Description: Description.value,
+                statusData: statusData.checked,
+                DeveloperName: DeveloperName.value,
+                Date: Date.value,
+            })
+            localStorage.setItem("Task_detail", JSON.stringify(get_data))
+            display_Data()
+            document.querySelector("form").reset()
+        })
+        function display_Data() {
+            let get_data = JSON.parse(localStorage.getItem("Task_detail")) || []
+            let show_Data = document.querySelector(".show_Data")
+            show_Data.innerHTML = ""
+            get_data.forEach((card_data, index) => {
+                show_Data.innerHTML += `
+                   <div class="col-lg-12 border main  rounded-3 p-3 mb-3 shadow position-relative">
+                    <span class="btn btn-danger position-absolute delete p-0 rounded-circle" id = ${index}>x</span>
+                <div class="row">
+                            <h5 class="mb-3">Task No : <span>${index + 1}</span></h5>
+                            <div class="col-md-4 col-12 mb-2">
+                                <b>Task Title :</b>
+                                <p class="d-sm-inline-block d-block m-0">${card_data.title}</p>
+                            </div>
+                            <div class="col-md-8 col-12 mb-2">
+                                <b>Task Description :</b>
+                                <p class="d-sm-inline-block d-block m-0">${card_data.Description}</p>
+                            </div>
+                            <div class="col-md-4 col-12 mb-2">
+                                <b>Developer Name :</b>
+                                <p class="d-sm-inline-block d-block m-0">${card_data.DeveloperName}</p>
+                            </div>
+                            <div class="col-md-4 col-12 mb-2">
+                                <b>Due Date :</b>
+                                <p class="d-sm-inline-block d-block m-0">${card_data.Date}</p>
+                            </div>
+                            <div class="col-md-4 col-12 mb-2">
+                                <b>Task Status :</b>
+                                <p class=" d-sm-inline-block d-block m-0">${card_data.statusData}</p>
+                            </div>
+                        </div>
+                        </div>
+                `
+            })
+
+            let allbtn = document.querySelectorAll(".delete")
+            allbtn.forEach((button) => {
+                button.addEventListener("click", (event) => {
+                    let btnID = Number(event.target.id)
+                    get_data.splice(btnID, 1)
+                    localStorage.setItem("Task_detail", JSON.stringify(get_data))
+                    display_Data()
+                })
+            })
+        }
+        display_Data()
+        document.querySelector(".all_Del").addEventListener("click", () => {
+            localStorage.clear()
+            display_Data()
+        })
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
