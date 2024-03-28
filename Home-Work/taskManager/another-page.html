@@ -56,13 +56,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Developer Name</label>
-                        <input type="password" class="form-control" id="DeveloperName" required>
+                        <input type="text" class="form-control" id="DeveloperName" required>
                     </div>
                     <div class="mb-3">
                         <div> <label for="exampleInputPassword1" class="form-label">Task Completion Status</label></div>
                         <div class="form-check">
                             <div class="point">
-                                <input type="checkbox" class="form-check-input" id="statusData" required>
+                                <input type="checkbox" class="form-check-input" id="statusData">
                                 <label class="form-check-label" for="statusData">Success</label>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                             </div>
                             <div class="col-md-4 col-12 mb-2">
                                 <b>Task Status :</b>
-                                <p class=" d-sm-inline-block d-block m-0">${card_data.statusData}</p>
+                                <p class=" d-sm-inline-block d-block m-0">${card_data.statusData ? "Success" : "Faild"}</p>
                             </div>
                         </div>
                         </div>

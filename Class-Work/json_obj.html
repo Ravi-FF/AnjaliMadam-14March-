@@ -37,7 +37,8 @@
         box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
     }
 
-    button[type="submit"] {
+    button[type="submit"],
+    button[type="button"] {
         padding: 7px 30px;
         background-color: navy;
     }
@@ -89,7 +90,9 @@
         <input type="text" id="nameid" placeholder="your name" required> <br> <br>
         <input type="text" id="subjectid" placeholder="subject" required> <br> <br>
         <input type="text" id="cityid" placeholder="city" required> <br> <br>
+        <input type="hidden" id="hiddenInp">
         <button type="submit">submit</button>
+        <button type="button" style="display: none;">Change Data</button>
     </form>
     <div class="wrapper">
         <button class="clear_all">Clear All</button>
@@ -111,11 +114,11 @@
     let obj = { name: "ravi", course: "front-end" }
     // JSON.stringify = to convert a obj into a json formate 
     let json_str = JSON.stringify(obj)
-    console.log(json_str);
+    // console.log(json_str);
 
     // JSON.parse = to convert a json str to normal js obj 
     let normal_obj = JSON.parse(json_str)
-    console.log(normal_obj);
+    // console.log(normal_obj);
 
     let form = document.querySelector("form")
 
@@ -125,16 +128,35 @@
         let subjectInput = document.querySelector("#subjectid");
         let cityInput = document.querySelector("#cityid");
         let getLocalData = JSON.parse(localStorage.getItem("student")) || [];
-        let dataId = getLocalData.length + 1
-        let obj = {
-            id: dataId,
-            name: nameInput.value,
-            subject: subjectInput.value,
-            city: cityInput.value,
+        let notRepet = false
+        let dataId;
+        for (const data of getLocalData) {
+            if (data.name == nameInput.value || data.id == dataId || data.subject == subjectInput.value || data.city == cityInput.value) {
+                notRepet = true
+            }
         }
-        getLocalData.push(obj)
-        localStorage.setItem("student", JSON.stringify(getLocalData))
-        displayData()
+        if (notRepet) {
+            alert("same data found")
+            nameInput.value = ""
+            subjectInput.value = ""
+            cityInput.value = ""
+        } else {
+            dataId = getLocalData.length + 1
+            let obj = {
+                id: dataId,
+                name: nameInput.value,
+                subject: subjectInput.value,
+                city: cityInput.value,
+            }
+            getLocalData.push(obj)
+            localStorage.setItem("student", JSON.stringify(getLocalData))
+            nameInput.value = ""
+            subjectInput.value = ""
+            cityInput.value = ""
+            displayData()
+        }
+
+
     })
     function displayData() {
         let getLocalData = JSON.parse(localStorage.getItem("student")) || [];
@@ -174,6 +196,7 @@
                 displayData()
             })
         })
+        editData()
     }
     displayData()
     document.querySelector(".clear_all").addEventListener("click", () => {
@@ -181,6 +204,38 @@
         displayData()
         form.reset()
     })
+    function editData() {
+        let allEdit = document.querySelectorAll(".edit")
+        allEdit.forEach((editBtn) => {
+            editBtn.addEventListener("click", (e) => {
+                let Editid = e.target.getAttribute("data-id")
+                let localdata = JSON.parse(localStorage.getItem("student")) || []
+                let dataChange_Btn = document.querySelector("button[type='button']")
+                let FintData = localdata.find(item => item.id == Editid)
+                document.querySelector("#nameid").value = FintData.name
+                document.querySelector("#subjectid").value = FintData.subject
+                document.querySelector("#cityid").value = FintData.city
+                document.querySelector("#hiddenInp").value = Editid
+                let allinput = document.querySelectorAll("input[type='text']")
+                let submitData = document.querySelector("input[type='submit']")
+                allinput.forEach((inputData) => {
+                    inputData.addEventListener("focus", () => {
+                        dataChange_Btn.style.display = "inline-block"
+                        submitData.style.display = "none"
+                    })
+                })
+                dataChange_Btn.addEventListener("click", () => {
+                    let hiddenData = document.querySelector("input[type='hidden']")
+                    let localdata = JSON.parse(localStorage.getItem("student")) || []
+                    localdata[hiddenData]
+                    let findData = localdata.find((item) => {
+                        return item.id == hiddenData.value
+                    })
+                    console.log(findData);
+                })
+            })
+        })
+    }
 </script>
 
 </html>
