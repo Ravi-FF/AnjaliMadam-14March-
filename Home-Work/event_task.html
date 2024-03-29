@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: whitesmoke;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            display: grid;
+            padding: 20px;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* height: 100vh; */
+        }
+
+        .add {
+            transform: rotate(-3deg);
+        }
+
+        .box {
+            cursor: pointer;
+            height: 300px;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border: 1px solid black;
+            transition: transform 0.5s ease-in;
+            transform-origin: top left;
+        }
+
+        .box:nth-child(even) {
+            background-color: red;
+        }
+
+        .box:nth-child(odd) {
+            background-color: blue;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Card task</h1>
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+<script>
+    let box = document.querySelectorAll(".box")
+    box.forEach(box => {
+        box.addEventListener("mouseenter", (event) => {
+            event.target.classList.add("add")
+        })
+        box.addEventListener("mouseleave", (event) => {
+            event.target.classList.remove("add")
+        })
+        box.addEventListener("click", (event) => {
+            event.target.style.opacity = "0"
+        })
+        box.addEventListener("dblclick", (event) => {
+            event.target.style.opacity = "1"
+        })
+    })
+
+    // document.querySelector(".container").addEventListener("mousemove", (event) => {
+    //     if (event.target.classList.contains("box")) {
+    //         event.target.classList.add("add")
+    //         console.log("ente");
+    //     }
+    // })
+    // document.querySelector(".container").addEventListener("mouseleave", (event) => {
+    //     if (event.target.classList.contains("box")) {
+    //         event.target.classList.remove("add")
+    //         console.log("leave");
+    //     }
+    // })
+</script>
+
+</html>

@@ -87,12 +87,12 @@
 
 <body>
     <form>
-        <input type="text" id="nameid" placeholder="your name" required> <br> <br>
-        <input type="text" id="subjectid" placeholder="subject" required> <br> <br>
-        <input type="text" id="cityid" placeholder="city" required> <br> <br>
+        <input type="text" id="nameid" placeholder="your name"> <br> <br>
+        <input type="text" id="subjectid" placeholder="subject"> <br> <br>
+        <input type="text" id="cityid" placeholder="city"> <br> <br>
         <input type="hidden" id="hiddenInp">
         <button type="submit">submit</button>
-        <button type="button" style="display: none;">Change Data</button>
+        <button type="button" id="changeData">Change Data</button>
     </form>
     <div class="wrapper">
         <button class="clear_all">Clear All</button>
@@ -210,32 +210,25 @@
             editBtn.addEventListener("click", (e) => {
                 let Editid = e.target.getAttribute("data-id")
                 let localdata = JSON.parse(localStorage.getItem("student")) || []
-                let dataChange_Btn = document.querySelector("button[type='button']")
-                let FintData = localdata.find(item => item.id == Editid)
-                document.querySelector("#nameid").value = FintData.name
-                document.querySelector("#subjectid").value = FintData.subject
-                document.querySelector("#cityid").value = FintData.city
-                document.querySelector("#hiddenInp").value = Editid
-                let allinput = document.querySelectorAll("input[type='text']")
-                let submitData = document.querySelector("input[type='submit']")
-                allinput.forEach((inputData) => {
-                    inputData.addEventListener("focus", () => {
-                        dataChange_Btn.style.display = "inline-block"
-                        submitData.style.display = "none"
-                    })
-                })
-                dataChange_Btn.addEventListener("click", () => {
-                    let hiddenData = document.querySelector("input[type='hidden']")
-                    let localdata = JSON.parse(localStorage.getItem("student")) || []
-                    localdata[hiddenData]
-                    let findData = localdata.find((item) => {
-                        return item.id == hiddenData.value
-                    })
-                    console.log(findData);
-                })
+                let data = localdata.find(item => item.id == Editid)
+                document.querySelector("#nameid").value = data.name
+                document.querySelector("#subjectid").value = data.subject
+                document.querySelector("#cityid").value = data.city
+                let changeData = document.querySelector("#changeData");
+                let dataChange_Btn = document.querySelector("button[type='submit']")
+
+                changeData.addEventListener("click", () => {
+                    let index = localdata.findIndex(item => item.id == Editid);
+                    localdata[index].name = document.querySelector("#nameid").value;
+                    localdata[index].subject = document.querySelector("#subjectid").value;
+                    localdata[index].city = document.querySelector("#cityid").value;
+                    localStorage.setItem("student", JSON.stringify(localdata));
+                    displayData();
+                });
             })
         })
     }
+
 </script>
 
 </html>
