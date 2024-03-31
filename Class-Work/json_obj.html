@@ -1,234 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Json and object</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+    </style>
 </head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        text-align: center;
-        text-transform: capitalize;
-        user-select: none;
-    }
-
-    button {
-        cursor: pointer;
-        border: none;
-        font-size: 15px;
-        color: white;
-        border-radius: 6px;
-    }
-
-    body {
-        background-color: whitesmoke;
-    }
-
-    form {
-        margin: 30px auto;
-        padding: 30px 35px;
-        width: 30%;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-    }
-
-    button[type="submit"],
-    button[type="button"] {
-        padding: 7px 30px;
-        background-color: navy;
-    }
-
-    input {
-        width: 100%;
-        font-size: 15px;
-        border-radius: 5px;
-        border: 1px solid black;
-        height: 35px;
-        text-align: start;
-        padding: 0px 10px;
-    }
-
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    .wrapper {
-        margin: 20px auto;
-        position: relative;
-        width: 70%;
-    }
-
-    td,
-    tr,
-    th {
-        border: 2px solid black;
-        padding: 8px 0;
-    }
-
-    .clear_all {
-        background-color: red;
-        padding: 4px 20px;
-        position: absolute;
-        right: -40px;
-        top: -40px;
-    }
-
-    button {
-        background-color: black;
-        padding: 8px;
-    }
-</style>
 
 <body>
-    <form>
-        <input type="text" id="nameid" placeholder="your name"> <br> <br>
-        <input type="text" id="subjectid" placeholder="subject"> <br> <br>
-        <input type="text" id="cityid" placeholder="city"> <br> <br>
-        <input type="hidden" id="hiddenInp">
-        <button type="submit">submit</button>
-        <button type="button" id="changeData">Change Data</button>
+    <form id="dataForm">
+        <input type="hidden" id="id" />
+        <input type="text" id="name" placeholder="Name" />
+        <input type="text" id="subject" placeholder="Subject" />
+        <input type="text" id="city" placeholder="City" />
+        <button type="submit">Submit</button>
+        <button type="button" onclick="resetForm()">Cancel</button>
     </form>
-    <div class="wrapper">
-        <button class="clear_all">Clear All</button>
-        <table>
-            <thead>
-                <th>id</th>
-                <th>name</th>
-                <th>subject</th>
-                <th>city</th>
-                <th colspan="2">action</th>
-            </thead>
-            <tbody>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
 
-            </tbody>
-        </table>
-    </div>
+
+    <script>
+        document.getElementById("dataForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            let id = document.getElementById("id").value;
+            let name = document.getElementById("name").value;
+            let subject = document.getElementById("subject").value;
+            let city = document.getElementById("city").value;
+
+            let data = JSON.parse(localStorage.getItem("data")) || [];
+
+            if (id) {
+                // Edit existing record
+                let recordIndex = data.findIndex(item => item.id == id);
+                data[recordIndex] = { id, name, subject, city };
+                console.log(data);
+                console.log(recordIndex);
+                // debugger
+                // if (recordIndex !== -1) {
+                data[recordIndex] = { id, name, subject, city };
+                // }
+            } else {
+                // Add new record
+                let newRecord = {
+                    id: data.length + 1, name, subject, city
+                };
+                data.push(newRecord);
+            }
+
+            localStorage.setItem("data", JSON.stringify(data));
+            renderTable();
+            resetForm();
+        });
+
+        function renderTable() {
+            let tbody = document.getElementById("tbody");
+            tbody.innerHTML = "";
+            let data = JSON.parse(localStorage.getItem("data")) || [];
+            data.forEach(item => {
+                let row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.name}</td>
+                    <td>${item.subject}</td>
+                    <td>${item.city}</td>
+                    <td>
+                        <button onclick="editRecord(${item.id})">Edit</button>
+                        <button onclick="deleteRecord(${item.id})">Delete</button>
+                    </td>
+                `;
+            });
+        }
+
+        function editRecord(id) {
+            let record = JSON.parse(localStorage.getItem("data")).find(item => item.id == id);
+            document.getElementById("id").value = record.id;
+            document.getElementById("name").value = record.name;
+            document.getElementById("subject").value = record.subject;
+            document.getElementById("city").value = record.city;
+        }
+
+        function deleteRecord(id) {
+            let data = JSON.parse(localStorage.getItem("data")) || [];
+            data = data.filter(item => item.id != id);
+            localStorage.setItem("data", JSON.stringify(data));
+            renderTable();
+        }
+
+        function resetForm() {
+            document.getElementById("id").value = "";
+            document.getElementById("name").value = "";
+            document.getElementById("subject").value = "";
+            document.getElementById("city").value = "";
+        }
+
+        renderTable();
+    </script>
 </body>
-<script>
-    let obj = { name: "ravi", course: "front-end" }
-    // JSON.stringify = to convert a obj into a json formate 
-    let json_str = JSON.stringify(obj)
-    // console.log(json_str);
-
-    // JSON.parse = to convert a json str to normal js obj 
-    let normal_obj = JSON.parse(json_str)
-    // console.log(normal_obj);
-
-    let form = document.querySelector("form")
-
-    form.addEventListener("submit", (event) => {
-        event.preventDefault()
-        let nameInput = document.querySelector("#nameid");
-        let subjectInput = document.querySelector("#subjectid");
-        let cityInput = document.querySelector("#cityid");
-        let getLocalData = JSON.parse(localStorage.getItem("student")) || [];
-        let notRepet = false
-        let dataId;
-        for (const data of getLocalData) {
-            if (data.name == nameInput.value || data.id == dataId || data.subject == subjectInput.value || data.city == cityInput.value) {
-                notRepet = true
-            }
-        }
-        if (notRepet) {
-            alert("same data found")
-            nameInput.value = ""
-            subjectInput.value = ""
-            cityInput.value = ""
-        } else {
-            dataId = getLocalData.length + 1
-            let obj = {
-                id: dataId,
-                name: nameInput.value,
-                subject: subjectInput.value,
-                city: cityInput.value,
-            }
-            getLocalData.push(obj)
-            localStorage.setItem("student", JSON.stringify(getLocalData))
-            nameInput.value = ""
-            subjectInput.value = ""
-            cityInput.value = ""
-            displayData()
-        }
-
-
-    })
-    function displayData() {
-        let getLocalData = JSON.parse(localStorage.getItem("student")) || [];
-        let tbody = document.querySelector("tbody")
-        tbody.innerHTML = " "
-        for (let index = 0; index < getLocalData.length; index++) {
-            let row = tbody.insertRow()
-            let cell0 = row.insertCell(0)
-            let cell1 = row.insertCell(1)
-            let cell2 = row.insertCell(2)
-            let cell3 = row.insertCell(3)
-            let cell4 = row.insertCell(4)
-            let cell5 = row.insertCell(5)
-            cell0.textContent = getLocalData[index].id
-            cell1.textContent = getLocalData[index].name
-            cell2.textContent = getLocalData[index].subject
-            cell3.textContent = getLocalData[index].city
-            cell4.innerHTML = `<button data-id="${getLocalData[index].id}" class="edit">Edit</button>`
-            cell5.innerHTML = `<button data-id="${getLocalData[index].id}" class='delete'>delete</button>`
-            //     let data = getLocalData[index]
-            //     tbody.innerHTML +=
-            //         `<tr>
-            //        <td>${data.id}</td>
-            //        <td>${data.name}</td>
-            //        <td>${data.subject}</td>
-            //        <td>${data.city}</td>
-            //     </tr>
-            // `
-        }
-        let btn = document.querySelectorAll(".delete")
-        btn.forEach(elm => {
-            elm.addEventListener("click", (e) => {
-                let data = e.target.getAttribute("data-id")
-                let localdata = JSON.parse(localStorage.getItem("student")) || []
-                localdata = localdata.filter((item) => Number(data) !== item.id)
-                localStorage.setItem("student", JSON.stringify(localdata))
-                displayData()
-            })
-        })
-        editData()
-    }
-    displayData()
-    document.querySelector(".clear_all").addEventListener("click", () => {
-        localStorage.clear()
-        displayData()
-        form.reset()
-    })
-    function editData() {
-        let allEdit = document.querySelectorAll(".edit")
-        allEdit.forEach((editBtn) => {
-            editBtn.addEventListener("click", (e) => {
-                let Editid = e.target.getAttribute("data-id")
-                let localdata = JSON.parse(localStorage.getItem("student")) || []
-                let data = localdata.find(item => item.id == Editid)
-                document.querySelector("#nameid").value = data.name
-                document.querySelector("#subjectid").value = data.subject
-                document.querySelector("#cityid").value = data.city
-                let changeData = document.querySelector("#changeData");
-                let dataChange_Btn = document.querySelector("button[type='submit']")
-
-                changeData.addEventListener("click", () => {
-                    let index = localdata.findIndex(item => item.id == Editid);
-                    localdata[index].name = document.querySelector("#nameid").value;
-                    localdata[index].subject = document.querySelector("#subjectid").value;
-                    localdata[index].city = document.querySelector("#cityid").value;
-                    localStorage.setItem("student", JSON.stringify(localdata));
-                    displayData();
-                });
-            })
-        })
-    }
-
-</script>
 
 </html>

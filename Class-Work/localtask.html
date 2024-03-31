@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td,
+        tr,
+        th {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        form {
+            width: 400px;
+            text-align: center;
+            padding: 10px;
+            margin: 0 auto;
+            /* border: 1px solid red; */
+        }
+
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+            height: 30px;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" placeholder="enter your First name" id="fname"> <br>
+        <input type="text" placeholder="enter your last name" id="lname"> <br>
+        <input type="text" placeholder="enter your subject" id="sname"> <br>
+        <button type="submit">Submit</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>subject</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+
+<script>
+    let form = document.querySelector("form")
+    form.addEventListener("submit", (e) => {
+        e.preventDefault()
+        let getData = JSON.parse(localStorage.getItem("data")) || []
+        let FirstName = document.querySelector("#fname")
+        let lastName = document.querySelector("#lname")
+        let subjectName = document.querySelector("#sname")
+
+        getData.push(
+            {
+                FirstName: FirstName.value,
+                lastName: lastName.value,
+                subjectName: subjectName.value
+            }
+        )
+        localStorage.setItem("data", JSON.stringify(getData))
+        displayData()
+    })
+    function displayData() {
+        let getData = JSON.parse(localStorage.getItem("data")) || []
+        let tbody = document.querySelector("tbody")
+        tbody.innerHTML = ""
+        getData.forEach((element, index) => {
+            tbody.innerHTML +=
+                `
+                <tr>
+            <td>${element.FirstName}</td>
+            <td>${element.lastName}</td>
+            <td>${element.subjectName}</td>
+            <td><button data-id=${index}>Edit</button></td>
+            <td><button data-id=${index} class="delete">Delete</button></td>
+        </tr>
+                `
+        });
+
+        let editall = document.querySelectorAll(".delete")
+        function deleteData() {
+            editall.forEach((elm) => {
+                elm.addEventListener("click", (e) => {
+                    let data_id = +(e.target.getAttribute("data-id"))
+                    let getData1 = JSON.parse(localStorage.getItem("data")) || []
+                    getData1.splice(getData1, 1)
+                    localStorage.setItem("data", JSON.stringify(getData1))
+                    console.log("hh")
+                    displayData()
+                })
+            })
+        }
+        deleteData()
+    }
+    displayData()
+</script>
+
+</html>

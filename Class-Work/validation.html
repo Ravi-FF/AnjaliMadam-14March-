@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="return checkValidation(event)">
+        <input type="text" id="nameid" placeholder="enter your name"> <br>
+        <input type="text" id="emailid" placeholder="enter your email"> <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+<script>
+    function checkValidation(e) {
+        e.preventDefault()
+        let name = document.querySelector("#nameid")
+        let email = document.querySelector("#emailid")
+        // if (name.value.length == 0) {
+        //     alert("name is requied");
+        //     return false
+        // }
+        // if (name.value.length < 8) {
+        //     alert("name must be 8 or more characters requied");
+        //     return false
+        // }
+
+        let validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!validEmail.test(email.value)) {
+            alert("Please Enter valid Email");
+            return false;
+        }
+
+        return true
+    }
+</script>
+
+</html>
