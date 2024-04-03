@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kalyan jeweller</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: whitesmoke;
+            background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJtF6NUxAuBWhwDmjBw92zuBL2JSWOpwjS9tyFMslkSg&s") no-repeat center/cover;
+        }
+
+        .form-control,
+        .form-select {
+            box-shadow: none !important;
+        }
+
+        form {
+            background: url("https://www.catenon.com/front/img/backgrounds/bg-digital.jpg") no-repeat center/cover;
+            color: whitesmoke;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h4 span {
+            color: white;
+        }
+
+        .totalNetAmount {
+            top: 0;
+            left: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-8 col-12">
+                <form class="p-5 rounded-4 shadow">
+                    <div class="row row-gap-3">
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" placeholder="Enter Your Name...!" required>
+                        </div>
+                        <div class="col-lg-6">
+                            <select id="gender" class="form-select" required>
+                                <option hidden>Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="number" class="form-control age" placeholder="Enter Your Age" required>
+                        </div>
+                        <div class="col-lg-6">
+                            <select id="Product_Name" class="form-select" required>
+                                <option hidden>Select Product</option>
+                                <option value="Bangle">Bangle</option>
+                                <option value="Bracelet">Bracelet</option>
+                                <option value="Ring">Ring</option>
+                                <option value="Earring">Earring</option>
+                                <option value="Locket">Locket</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="number" class="form-control" id="Product_Number"
+                                placeholder="Enter Product Number" required>
+
+                        </div>
+                        <div class="col-lg-6 ">
+                            <input type="number" id="product-gram" class="form-control"
+                                placeholder="Enter Product Gram ( 1 Gram: ₹5752 )" required>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="exampleInputEmail1" class="form-label fw-medium">Your Total Gold Rate</label>
+                            <input type="number" class="form-control" placeholder="Total Gold Rate" disabled id="total">
+                        </div>
+                        <b class="d-block">Making charges (1 Gram) : ₹845</b>
+                        <b class="d-block">Total Making Charges : <span class="makingAmount"></span></b>
+                        <b class="d-block">Total Amount : <span class="TOTAL_AMOUNT"></span></b>
+                        <b class="d-block">Discount : <span class="Discount"></span></b>
+                        <h4 class="text-center">Total Net Amount : <span class="totalNetAmount fs-1"></span></h4>
+                        <button type="submit" hidden></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+<script>
+    let age = document.querySelector(".age")
+    let gender = document.querySelector("#gender")
+    let ProductName = document.querySelector("#Product_Name")
+    let ProductNumber = document.querySelector("#Product_Number")
+    let Productgram = document.querySelector("#product-gram")
+    let TotalAmount = document.querySelector("#total")
+    let makingAmount = document.querySelector(".makingAmount")
+    let TotalwithMaking = document.querySelector(".TOTAL_AMOUNT")
+    let discount = document.querySelector(".Discount")
+
+    document.querySelector("form").addEventListener("submit", (event) => {
+        event.preventDefault()
+        ShowTotal()
+    })
+    function ShowTotal() {
+        let totalinput = parseFloat(ProductNumber.value) * (parseFloat(Productgram.value) * 5752)
+        TotalAmount.value = totalinput
+
+
+        let totalGram = parseFloat(ProductNumber.value) * parseFloat(Productgram.value)
+
+        let makingAmount_data = (totalGram) * parseFloat((Productgram.value) * 845)
+
+        makingAmount.textContent = "₹" + makingAmount_data.toLocaleString('en-IN')
+        let Total_Making = parseFloat(totalinput) + parseFloat(makingAmount_data)
+        TotalwithMaking.textContent = "₹" + (parseFloat(totalinput) + makingAmount_data).toLocaleString('en-IN')
+        discountAmount(Total_Making)
+    }
+    function discountAmount(Total_Making_data) {
+        let discountPercent = ""
+        if (age.value > 65) {
+            discountPercent = gender.value === "Male" ? (Total_Making_data > 21000 && Total_Making_data < 31000 ? 20 : Total_Making_data > 31000 && Total_Making_data < 51000 ? 30 : 35) : (Total_Making_data > 21000 && Total_Making_data < 31000 ? 25 : Total_Making_data > 31000 && Total_Making_data < 51000 ? 35 : 40)
+        } else {
+            discountPercent = gender.value === "Male" ? (Total_Making_data > 21000 && Total_Making_data < 31000 ? 10 : Total_Making_data > 31000 && Total_Making_data < 51000 ? 20 : 25) : (Total_Making_data > 21000 && Total_Making_data < 31000 ? 15 : Total_Making_data > 31000 && Total_Making_data < 51000 ? 25 : 30)
+        }
+        const netTotal = Total_Making_data - (Total_Making_data * discountPercent) / 100
+        discount.textContent = discountPercent + "%"
+        document.querySelector(".totalNetAmount").innerHTML = `₹${netTotal.toLocaleString('en-IN')}`
+    }
+</script>
+
+</html>
