@@ -19,18 +19,68 @@
             justify-content: center;
             align-items: center;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./team-img/bg.webp) no-repeat center/cover;
-            /* background-color: whitesmoke; */
             height: 100vh;
         }
 
-        .img-box {
-            cursor: pointer;
-            transition: 0.3s ease-in-out;
-            border: 1px solid white;
+        img {
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+            width: 100%;
         }
 
-        .img-box:hover {
-            transform: scale(0.9);
+        .img-wrapper {
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+            border: 1px solid white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 210px;
+            background: linear-gradient(137.7deg, rgba(1, 78, 162, .8) 1%, rgba(1, 78, 162, .24) 110.83%)
+        }
+
+        .img-box {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overlay {
+            width: 300px;
+            height: 300px !important;
+            border-radius: 100%;
+            left: 50%;
+            transform: translatex(-50%);
+            top: -160px;
+            z-index: 1;
+            position: absolute;
+        }
+
+        .appendData h4 {
+            position: absolute;
+            z-index: 100;
+            bottom: 18px;
+            left: 50%;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: white;
+            width: 100%;
+            transform: translatex(-50%);
+            font-size: 16px;
+        }
+
+        .img-box img {
+            position: absolute;
+            left: 50%;
+            top: 2%;
+            transform: translatex(-50%);
+            z-index: 100;
+            width: 120px;
+            height: auto;
         }
 
         .team-img {
@@ -44,12 +94,39 @@
         }
 
         .glass-effect {
-            /* filter: blur(10px); */
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             backdrop-filter: blur(3px);
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .overlay-box {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: -100%;
+            transition: all 0.5s ease-out;
+            left: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        }
+
+        .start-tose {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            width: 300px;
+            border-radius: 10px;
+            transition: all 0.6s ease-out;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 120px;
         }
     </style>
 </head>
@@ -57,7 +134,7 @@
 <body>
     <div class="container">
         <div class="row justify-content-between align-items-center border rounded-4 p-3 glass-effect">
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <div class="row appendData justify-content-center"></div>
             </div>
             <div class="col-lg-7">
@@ -77,12 +154,25 @@
                     </div>
                 </div>
                 <div class="col-12 text-center mt-5">
-                    <button class="start-btn btn btn-primary d-none">Start Game</button>
+                    <a href="./otherPage.html"><button class="start-btn btn btn-primary d-none">Start Game</button></a>
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="overlay-box"></div>
+    <div class="start-tose" id="start-button">
+        <div class="d-flex w-100 justify-content-around align-items-center">
+            <button class="btn btn-danger">Head</button>
+            <button class="btn btn-danger">Tail</button>
+        </div>
+    </div>
+    <div class="start-tose d-none" id="start-game">
+        <h5 class="m-0 text-black">Which one will you choose</h5>
+        <div class="d-flex w-100 justify-content-around align-items-center">
+            <button class="btn btn-primary">Ball</button>
+            <button class="btn btn-primary">Bat</button>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -91,21 +181,27 @@
     let Row = document.querySelector(".appendData")
     let showimg = document.querySelector(".show-img")
     let imgArr = ["team-1.png", "team-2.png", "team-3.png", "team-4.png", "team-5.png", "team-6.png"]
+    let bgImg = ["#b9251c", "white", "#2d6ab1", "#d71920", "#2b2a29", "#ecc542"]
+    let teamNAme = ["Delhi Capitals", "Lucknow Super Giants", "Mumbai Indians", "punjab kings", "Royal Challengers Bengaluru", "Kolkata Knight Riders"]
     function GameFunction() {
         Row.innerHTML = ""
-        imgArr.forEach((img) => {
+        imgArr.forEach((img, i) => {
             Row.innerHTML += `
-            <div class="col-lg-6 col-sm-4 col-8 p-2">
-                        <div class="img-box team rounded-4 overflow-hidden">
-                            <img src="./team-img/${img}" alt="" class="img-fluid">
+            <div class="col-sm-5  col-7 p-2">
+                        <div class="img-wrapper rounded-4 overflow-hidden">
+                            <div class="img-box team " style="background-color:;">
+                                <div class="overlay" style="background-color:${bgImg[i]};" ></div>
+                                <img src="./team-img/${img}" alt="" class="img-fluid">
+                                <h4 class="text-center my-1">${teamNAme[i]}</h4>
+                            </div>
                         </div>
                     </div>
             `
         })
-        let allImg = document.querySelectorAll(".team img")
+        let allImg = document.querySelectorAll(".img-wrapper")
         allImg.forEach((img) => {
             img.addEventListener("click", (e) => {
-                showimg.src = e.target.getAttribute("src")
+                showimg.src = img.querySelector("img").getAttribute("src")
                 document.querySelector("button").classList.remove("d-none")
                 randomImg()
             })
@@ -123,6 +219,11 @@
             randomImg()
         }
     }
+
+
+    
+
+
 </script>
 
 </html>

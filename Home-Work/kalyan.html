@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none;
         }
 
         body {
@@ -22,6 +23,7 @@
         .form-control,
         .form-select {
             box-shadow: none !important;
+            border: 1px solid gray;
         }
 
         form {
@@ -34,6 +36,12 @@
             height: 100vh;
             justify-content: center;
             align-items: center;
+        }
+
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
         }
 
         h4 span {
@@ -94,7 +102,7 @@
                         <b class="d-block">Total Making Charges : <span class="makingAmount"></span></b>
                         <b class="d-block">Total Amount : <span class="TOTAL_AMOUNT"></span></b>
                         <b class="d-block">Discount : <span class="Discount"></span></b>
-                        <h4 class="text-center">Total Net Amount : <span class="totalNetAmount fs-1"></span></h4>
+                        <h4 class="text-center"><span class="totalNetAmount fs-1"></span></h4>
                         <button type="submit" hidden></button>
                     </div>
                 </form>
@@ -116,10 +124,16 @@
     let TotalwithMaking = document.querySelector(".TOTAL_AMOUNT")
     let discount = document.querySelector(".Discount")
 
-    document.querySelector("form").addEventListener("submit", (event) => {
-        event.preventDefault()
-        ShowTotal()
-    })
+    class Calculate_Amount {
+        constructor() {
+            document.querySelector("form").addEventListener("submit", (event) => {
+                event.preventDefault()
+                ShowTotal()
+            })
+        }
+
+    }
+
     function ShowTotal() {
         let totalinput = parseFloat(ProductNumber.value) * (parseFloat(Productgram.value) * 5752)
         TotalAmount.value = totalinput
@@ -127,7 +141,7 @@
 
         let totalGram = parseFloat(ProductNumber.value) * parseFloat(Productgram.value)
 
-        let makingAmount_data = (totalGram) * parseFloat((Productgram.value) * 845)
+        let makingAmount_data = (totalGram) * 845
 
         makingAmount.textContent = "₹" + makingAmount_data.toLocaleString('en-IN')
         let Total_Making = parseFloat(totalinput) + parseFloat(makingAmount_data)
@@ -145,6 +159,8 @@
         discount.textContent = discountPercent + "%"
         document.querySelector(".totalNetAmount").innerHTML = `₹${netTotal.toLocaleString('en-IN')}`
     }
+
+    const totalAmout = new Calculate_Amount()
 </script>
 
 </html>
