@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza and pasta Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: cursive;
+            text-transform: capitalize;
+            /* line-height: 35px; */
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* background-color: whitesmoke; */
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        }
+
+        label {
+            cursor: pointer;
+        }
+
+        #showBill {
+            background-color: whitesmoke;
+            padding: 20px;
+            border: 1px solid red;
+            margin-top: 20px;
+            display: none;
+        }
+
+        #showBill p {
+            line-height: 30px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+        }
+
+        h2,
+        h4 {
+            text-align: center;
+        }
+
+        button {
+            padding: 3px 15px;
+            cursor: pointer;
+        }
+
+        .space {
+            margin: 10px 0;
+        }
+
+        input {
+            height: 30px;
+            padding: 10px;
+        }
+
+        .notes p {
+            color: red;
+        }
+
+        .cong {
+            color: green;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Welcome to Amazing Pizza and Pasta Pizzeria</h2>
+        <p><b>Name : </b><span class="name"></span></p>
+        <form action="">
+            <div class="pizza">
+                <h3>Enter your pizza details</h3>
+                <div class="space"><b>Enter your Pizza</b> <input type="number" class="pizza-input"
+                        placeholder="Pizza Number.....!">
+                </div>
+                <div class="box space">
+                    <b>Select Pizza Price : </b>
+                    <select id="pizza-price">
+                        <option value="" id="Pizza" hidden>Select Price</option>
+                        <option value="10.99">10.99</option>
+                        <option value="20.99">20.99</option>
+                        <option value="10.99">10.99</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="pasta" style="margin-top: 30px;">
+                <h3 style="margin-bottom: 10px;">Enter your pasta details</h3>
+                <div><b>Enter your pasta</b> <input type="number" class="pasta-input" placeholder="Pasta Number......!">
+                </div>
+                <b>Select Pasta Price : </b>
+                <select id="pasta-price" class="space">
+                    <option value="" id="Pizza" hidden>Select Price</option>
+                    <option value="9.5">9.5</option>
+                    <option value="17.00">17.00</option>
+                    <option value="27.50">27.50</option>
+                </select>
+                <p></p>
+                <p></p>
+            </div>
+            <p><b>your pizza order amount is : </b><span class="Pizza_Total"></span></p>
+            <p class="cold_p cong"></p>
+            <p class="pasta_p cong"></p>
+            <p class="congrats cong"></p>
+            <h3 class="totalOder"></h3>
+            <p><b>your pasta order amount is : </b><span class="pasta_Total"></span></p>
+            <p><b>your Net order amount of the day is : </b><span class="net_today"></span></p>
+            <div>
+                want to enter order from another customer: <button class="yes" type="button" onclick="againRendar()"
+                    class="yesBtn">Yes</button>
+                <button class="no" type="button" onclick="dataNorender()">no</button>
+
+            </div>
+            <div class="notes space">
+                <h3>Notes : </h3>
+                <ul>
+                    <li>
+                        <p>Buy 4 or more pizza and get 1.5lt of soft drink free</p>
+                    </li>
+                    <li>
+                        <p>Buy 4 or more pastas and get 2 bruschetta free.</p>
+                    </li>
+                    <li>
+                        <p>Buy 4 or more pizzas and pastas and get 2 chocco brownies ice cream free.</p>
+                    </li>
+                </ul>
+            </div>
+            <button type="submit">show</button>
+        </form>
+        <div id="showBill">
+            <h4>----------- Pizza and pasta Bill --------------</h4>
+            <p><b>Customer Name: </b> <span class="bill_Name"></span></p>
+            <p><b>payment received from pizza : </b><span class="bill_pizzaTotal"></span></p>
+
+            <p><b>payment received from pasta : </b><span class="bill_pastaTotal"></span></p>
+
+            <p><b>payment received today : </b><span class="bill_Today"></span></p>
+
+            <p><b>Number of pizza and pasta sold in one shift : </b><span></span></p>
+
+            <p><b>Number of 1.5lt soft drink bottles given : </b><span class="bill_softDrink"></span></p>
+
+            <p><b>Number of bruschetta given to customer : </b><span></span></p>
+
+            <p><b>Number of chocco brownies ice cream given to customer : </b><span class="bill-iceCream"></span></p>
+        </div>
+    </div>
+</body>
+<script>
+    // (function () {
+    //     let form = document.querySelector("form")
+    //     let coldDrink = 0
+    //     let Bruschetta = 0
+    //     let totalAmount = 0
+    //     let iceCream = 0
+    //     let totalPizzaAmount = 0
+    //     let totalPastaAmount = 0
+    //     let totalTodayAmount = 0
+    //     let coldText = document.querySelector(".cold_p")
+    //     let pastaText = document.querySelector(".pasta_p")
+    //     let pasta_Total = document.querySelector(".pasta_Total")
+    //     let congrats = document.querySelector(".congrats")
+    //     let pizzaTotal = document.querySelector(".Pizza_Total")
+    //     let totalOder = document.querySelector(".totalOder")
+    //     let netToday = document.querySelector(".net_today")
+    //     let ShowBill = document.querySelector("#showBill")
+    //     form.addEventListener("submit", (event) => {
+    //         showData()
+    //         event.preventDefault()
+    //     })
+    //     function showData() {
+    //         let pizza_Input = Number(document.querySelector(".pizza-input").value.trim())
+    //         let pasta_Input = Number(document.querySelector(".pasta-input").value.trim())
+    //         let pizza_Price = Number(document.querySelector("#pizza-price").value)
+    //         let pasta_Price = Number(document.querySelector("#pasta-price").value)
+    //         if ((document.querySelector(".pizza-input").value == "") || (document.querySelector(".pasta-input").value == "")) {
+    //             alert("please Enter Pizza and Pasta Value")
+    //             return
+    //         }
+    //         if (pizza_Input >= 5) {
+    //             coldDrink += 1
+    //             coldText.textContent = "Congratulations !! 1.5lt softdrink free"
+    //         } else {
+    //             coldText.textContent = ""
+    //         }
+    //         let TotalpizzaPrice = pizza_Input * pizza_Price
+    //         totalPizzaAmount += TotalpizzaPrice
+    //         pizzaTotal.textContent = "₹" + TotalpizzaPrice
+
+    //         if (pasta_Input >= 5) {
+    //             Bruschetta += 2
+    //             pastaText.textContent = "Congratulations !! get 2 bruschetta free"
+    //         } else {
+    //             pastaText.textContent = ""
+    //         }
+    //         let TotalpastaPrice = pasta_Input * pasta_Price
+    //         totalPastaAmount = TotalpastaPrice
+    //         pasta_Total.textContent = "₹" + TotalpastaPrice
+
+    //         if (pasta_Input >= 5 && pizza_Input >= 5) {
+    //             iceCream += 1
+    //             congrats.textContent = "Congratulations !! get 2 chocco brownies ice cream free "
+    //         } else {
+    //             congrats.textContent = ""
+    //         }
+    //         let totalOder = (TotalpizzaPrice + TotalpastaPrice).toFixed(3)
+    //         totalOder.textContent = "₹" + totalOder
+    //         netToday.textContent = "₹" + totalOder
+    //         totalAmount += Number(totalOder)
+    //         BillShow()
+    //     }
+
+    //     function againRendar() {
+    //         let allClear = document.querySelectorAll(".cold_p, .pasta_p, .Pizza_Total, .pasta_Total, .congrats, .totalOder, .net_today")
+    //         allClear.forEach((elm) => {
+    //             elm.textContent = ""
+    //         })
+    //         document.querySelector("form").reset()
+    //     }
+    //     function dataNorender() {
+    //         againRendar()
+    //         ShowBill.style.display = "none"
+    //     }
+    //     function BillShow() {
+    //         ShowBill.style.display = "block"
+    //         document.querySelector(".bill_pizzaTotal").textContent = "₹" + totalPizzaAmount.toFixed(2)
+    //         document.querySelector(".bill_pastaTotal").textContent = "₹" + totalPastaAmount
+    //         document.querySelector(".bill_Today").textContent = "₹" + totalAmount
+    //         document.querySelector(".bill_softDrink").textContent = "₹" + coldDrink
+    //         document.querySelector(".bill-iceCream").textContent = "₹" + iceCream
+    //     }
+    // })()
+
+    class ShowData {
+        constructor() {
+            // let promt = prompt("Enter Your Name.....!")
+            // document.querySelector(".name").innerHTML = promt
+            this.form = document.querySelector("form")
+            this.coldDrink = 0
+            this.Bruschetta = 0
+            this.totalAmount = 0
+            this.iceCream = 0
+            this.totalPizzaAmount = 0
+            this.totalPastaAmount = 0
+            this.totalTodayAmount = 0
+            this.coldText = document.querySelector(".cold_p")
+            this.pastaText = document.querySelector(".pasta_p")
+            this.pasta_Total = document.querySelector(".pasta_Total")
+            this.congrats = document.querySelector(".congrats")
+            this.pizzaTotal = document.querySelector(".Pizza_Total")
+            this.totalOder = document.querySelector(".totalOder")
+            this.netToday = document.querySelector(".net_today")
+            this.ShowBill = document.querySelector("#showBill")
+            this.yesBtn = document.querySelector(".yesBtn")
+            this.form.addEventListener("submit", (event) => {
+                event.preventDefault()
+                this.showData()
+            })
+        }
+
+        showData() {
+            let pizza_Input = Number(document.querySelector(".pizza-input").value.trim())
+            let pasta_Input = Number(document.querySelector(".pasta-input").value.trim())
+            let pizza_Price = Number(document.querySelector("#pizza-price").value)
+            let pasta_Price = Number(document.querySelector("#pasta-price").value)
+            if ((document.querySelector(".pizza-input").value == "") || (document.querySelector(".pasta-input").value == "")) {
+                alert("please Enter Pizza and Pasta Value")
+                return
+            }
+            if (pizza_Input >= 5) {
+                this.coldDrink += 1
+                this.coldText.textContent = "Congratulations !! 1.5lt softdrink free"
+            } else {
+                this.coldText.textContent = ""
+            }
+            let TotalpizzaPrice = pizza_Input * pizza_Price
+            this.totalPizzaAmount += TotalpizzaPrice
+            this.pizzaTotal.textContent = "₹" + TotalpizzaPrice
+
+            if (pasta_Input >= 5) {
+                this.Bruschetta += 2
+                this.pastaText.textContent = "Congratulations !! get 2 bruschetta free"
+            } else {
+                this.pastaText.textContent = ""
+            }
+            let TotalpastaPrice = pasta_Input * pasta_Price
+            this.totalPastaAmount = TotalpastaPrice
+            this.pasta_Total.textContent = "₹" + TotalpastaPrice.toFixed(2)
+
+            if (pasta_Input >= 5 && pizza_Input >= 5) {
+                this.iceCream += 1
+                this.congrats.textContent = "Congratulations !! get 2 chocco brownies ice cream free "
+            } else {
+                this.congrats.textContent = ""
+            }
+            let totalOder = (TotalpizzaPrice + TotalpastaPrice).toFixed(3)
+            this.totalOder.textContent = "₹" + totalOder
+            this.netToday.textContent = "₹" + totalOder
+            this.totalAmount += Number(totalOder)
+            this.BillShow()
+        }
+        // document.querySelector()
+        againRendar() {
+            let allClear = document.querySelectorAll(".cold_p, .pasta_p, .Pizza_Total, .pasta_Total, .congrats, .totalOder, .net_today")
+            allClear.forEach((elm) => {
+                elm.textContent = ""
+            })
+            this.form.reset()
+        }
+        dataNorender() {
+            this.againRendar()
+            this.ShowBill.style.display = "none"
+        }
+        BillShow() {
+            this.ShowBill.style.display = "block"
+            document.querySelector(".bill_pizzaTotal").textContent = "₹" + this.totalPizzaAmount.toFixed(2)
+            document.querySelector(".bill_pastaTotal").textContent = "₹" + this.totalPastaAmount
+            document.querySelector(".bill_Today").textContent = "₹" + this.totalAmount
+            document.querySelector(".bill_softDrink").textContent = "₹" + this.coldDrink
+            document.querySelector(".bill-iceCream").textContent = "₹" + this.iceCream
+        }
+    }
+    let obj = new ShowData()
+</script>
+
+</html>

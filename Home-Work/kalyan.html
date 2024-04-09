@@ -17,7 +17,7 @@
 
         body {
             background-color: whitesmoke;
-            background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJtF6NUxAuBWhwDmjBw92zuBL2JSWOpwjS9tyFMslkSg&s") no-repeat center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://wallpapercave.com/wp/wp8149661.jpg") no-repeat center/cover;
         }
 
         .form-control,
@@ -27,8 +27,13 @@
         }
 
         form {
-            background: url("https://www.catenon.com/front/img/backgrounds/bg-digital.jpg") no-repeat center/cover;
-            color: whitesmoke;
+            color: black;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
 
         .container {
@@ -44,10 +49,6 @@
             font-weight: 600;
         }
 
-        h4 span {
-            color: white;
-        }
-
         .totalNetAmount {
             top: 0;
             left: 100%;
@@ -59,7 +60,7 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-8 col-12">
-                <form class="p-5 rounded-4 shadow">
+                <form class="p-5 rounded-4">
                     <div class="row row-gap-3">
                         <div class="col-lg-6">
                             <input type="text" class="form-control" placeholder="Enter Your Name...!" required>
@@ -102,7 +103,7 @@
                         <b class="d-block">Total Making Charges : <span class="makingAmount"></span></b>
                         <b class="d-block">Total Amount : <span class="TOTAL_AMOUNT"></span></b>
                         <b class="d-block">Discount : <span class="Discount"></span></b>
-                        <h4 class="text-center"><span class="totalNetAmount fs-1"></span></h4>
+                        <h4 class="text-center"><span class="totalNetAmount fs-1 text-white"></span></h4>
                         <button type="submit" hidden></button>
                     </div>
                 </form>

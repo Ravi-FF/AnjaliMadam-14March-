@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Object</title>
+</head>
+
+<body>
+    <button onclick="CreateNew()">Click</button>
+    <button onclick="External_url()">Get Email</button>
+</body>
+<script>
+    function CreateNew() {
+        let WindowFeature = "height=500px,width = 500px";
+        let FileURL = "checked.html"
+        let newWindow = window.open(FileURL, "_blank", WindowFeature)
+        // let newWindow = window.open("about:blank", "_blank", WindowFeature)
+        if (newWindow) {
+            newWindow.open()
+            // let h1 = newWindow.document.createElement("h1")
+            // h1.textContent = "Hello welcome to new Window"
+            // h1.style.color = "red"
+            // newWindow.document.body.append(h1)
+        }
+    }
+
+
+    // External_url 
+    function External_url() {
+        let WindowFeature = "height=500px,width = 500px";
+        let newWindow = window.open("https:/www.gmail.com/", "_blank", WindowFeature)
+        window.open()
+    }
+</script>
+
+</html>
