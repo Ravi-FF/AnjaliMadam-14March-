@@ -1,0 +1,72 @@
+@media screen and (max-width:992px) {
+    aside {
+        overflow: visible !important;
+    }
+
+    aside>ul>li>a span+span,
+    aside>ul>li>a .right-arrow,
+    aside .menu-title,
+    aside p {
+        display: none;
+    }
+
+    aside>ul>li>a i {
+        font-size: 18px;
+        transition: var(--effect);
+    }
+
+    aside>ul>li>a:hover i {
+        color: var(--secondary) !important;
+    }
+
+    aside .sub-ul {
+        position: absolute;
+    }
+
+    aside {
+        width: auto;
+    }
+
+    aside>ul>li>a span {
+        margin: 0 !important;
+    }
+
+    aside>ul>li>a {
+        padding: 8px 18px;
+    }
+
+    aside>ul>li {
+        position: relative;
+    }
+
+    aside .sub-ul {
+        width: 200px;
+        border-radius: 0.5rem;
+        left: 100%;
+        top: 0;
+    }
+
+    aside>ul>li:hover .sub-ul {
+        height: auto;
+    }
+
+    nav .logo-text {
+        display: none;
+    }
+
+    nav .left-nav {
+        width: auto;
+    }
+
+    nav .right-nav {
+        width: 100%;
+    }
+
+    nav .right-nav h5 {
+        padding-left: 40px;
+    }
+
+    .nav-control {
+        display: none !important;
+    }
+}

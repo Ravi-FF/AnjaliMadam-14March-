@@ -11,13 +11,11 @@
             padding: 0;
             font-family: cursive;
             text-transform: capitalize;
-            /* line-height: 35px; */
             list-style: none;
             box-sizing: border-box;
         }
 
         body {
-            /* background-color: whitesmoke; */
             background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
         }
 
@@ -117,9 +115,9 @@
             <p><b>your pasta order amount is : </b><span class="pasta_Total"></span></p>
             <p><b>your Net order amount of the day is : </b><span class="net_today"></span></p>
             <div>
-                want to enter order from another customer: <button class="yes" type="button" onclick="againRendar()"
+                want to enter order from another customer: <button class="yes" type="button" onclick="obj.againRendar()"
                     class="yesBtn">Yes</button>
-                <button class="no" type="button" onclick="dataNorender()">no</button>
+                <button class="no" type="button" onclick="obj.dataNorender()">no</button>
 
             </div>
             <div class="notes space">
@@ -244,8 +242,8 @@
 
     class ShowData {
         constructor() {
-            // let promt = prompt("Enter Your Name.....!")
-            // document.querySelector(".name").innerHTML = promt
+            let promt = prompt("Enter Your Name.....!")
+            document.querySelector(".name").innerHTML = promt
             this.form = document.querySelector("form")
             this.coldDrink = 0
             this.Bruschetta = 0
@@ -268,7 +266,6 @@
                 this.showData()
             })
         }
-
         showData() {
             let pizza_Input = Number(document.querySelector(".pizza-input").value.trim())
             let pasta_Input = Number(document.querySelector(".pasta-input").value.trim())
@@ -310,7 +307,6 @@
             this.totalAmount += Number(totalOder)
             this.BillShow()
         }
-        // document.querySelector()
         againRendar() {
             let allClear = document.querySelectorAll(".cold_p, .pasta_p, .Pizza_Total, .pasta_Total, .congrats, .totalOder, .net_today")
             allClear.forEach((elm) => {
