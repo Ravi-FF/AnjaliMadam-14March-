@@ -50,11 +50,11 @@
         height: auto;
     }
 
-    nav .logo-text {
+    aside .logo-text {
         display: none;
     }
 
-    nav .left-nav {
+    aside .left-nav {
         width: auto;
     }
 
@@ -62,11 +62,16 @@
         width: 100%;
     }
 
-    nav .right-nav h5 {
-        padding-left: 40px;
+    nav {
+        padding-left: 65px;
     }
 
-    .nav-control {
+    aside .nav-control {
         display: none !important;
+    }
+
+    .main-wrapper {
+        width: 100%;
+        margin-left: 63px !important;
     }
 }
