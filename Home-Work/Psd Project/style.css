@@ -1,6 +1,7 @@
 * {
     list-style: none;
     text-decoration: none !important;
+    user-select: none;
 }
 
 :root {
@@ -410,8 +411,6 @@ aside p {
     z-index: 1;
 }
 
-.progress {}
-
 .depostit-card .progress-box .progress {
     height: 0.313rem;
     margin-top: 0.188rem;
@@ -534,6 +533,30 @@ aside p {
     background: var(--border);
 }
 
+.todo-heigth {
+    margin-top: 57px !important;
+    height: 392px;
+}
+
+.todo-heigth::-webkit-scrollbar {
+    width: 10px;
+}
+
+.todo-heigth::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 10px;
+}
+
+.todo-heigth::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #f1f1f1;
+}
+
+.todo-top {
+    left: 0;
+    right: 0;
+}
+
 .todo-top span {
     font-size: 14px;
     cursor: pointer;
@@ -542,4 +565,42 @@ aside p {
 .todo-top span:nth-child(1) {
     color: var(--card-primary) !important;
     margin-right: 10px;
+}
+
+.todo-edit span {
+    text-align: center;
+    line-height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 30px;
+    display: inline-block;
+    height: 30px;
+    background-color: whitesmoke;
+}
+
+.todo-edit span:nth-child(1) {
+    color: rgb(255, 94, 94);
+
+}
+
+.todo-edit span:nth-child(2) {
+    color: rgb(13, 153, 255);
+}
+
+.todo-input label {
+    cursor: pointer;
+    font-size: 15px;
+    color: var(--dropDown-clr);
+}
+
+.todo-input input {
+    cursor: pointer;
+}
+
+.todo-input p {
+    font-size: 13.5px;
+}
+
+.todo-text {
+    font-size: 14px;
 }
