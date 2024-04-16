@@ -6,16 +6,27 @@
 
 :root {
     --nav-head-bg: #222B40;
+    --headerbg: #F3F0EC;
+    --header-icon-bg: white;
     --white-clr: white;
     --black-clr: black;
     --body-bg: #F3F0EC;
-    --nav-bg: #F3F0EC;
     --effect: 0.2s linear;
     --secondary: #F8B940;
     --card-primary: #452B90;
     --dropDown-clr: #888888;
     --border: #dad8d4;
-    /* --left-padding: 15rem; */
+    --card: white;
+    --color: #222B40;
+}
+
+.dark {
+    --headerbg: #182237;
+    --body-bg: #151C2C;
+    --card: #182237;
+    --color: white;
+    --border: rgba(255, 255, 255, 0.1);
+    --header-icon-bg: #4C659F;
 }
 
 body {
@@ -39,6 +50,23 @@ ul {
     padding: 0 !important;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#projects-tbl .sorting,
+a {
+    color: var(--color);
+}
+
+.form-control {
+    background: var(--header-icon-bg) !important;
+    color: var(--color) !important;
+    /* border: 1px solid var(--border) !important; */
+}
+
 /* header-start  */
 nav {
     height: 60px;
@@ -51,7 +79,7 @@ nav {
 nav .right-nav {
     transition: var(--effect);
     width: calc(100% - 220px);
-    background-color: var(--nav-bg);
+    background-color: var(--headerbg);
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -70,7 +98,7 @@ nav .right-nav h5 {
     height: 380px;
     overflow: auto;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--card);
 }
 
 .ball-hide {
@@ -130,26 +158,26 @@ nav .input-box input {
     box-shadow: none !important;
 }
 
-nav .nav-buttons ul li a {
+nav .nav-buttons>ul>li>a {
     display: flex;
     overflow: hidden;
-    color: var(--black-clr);
+    color: var(--color);
     justify-content: center;
     align-items: center;
 }
 
-nav .nav-buttons ul li a {
+nav .nav-buttons>ul>li>a {
     position: relative;
     height: 45px;
     width: 45px;
     margin: 0 5px;
     text-align: center;
     border-radius: 0.5rem;
-    background: #fff;
+    background: var(--header-icon-bg);
 }
 
 nav .right-nav .input-box {
-    background-color: var(--white-clr);
+    background-color: var(--header-icon-bg);
 }
 
 .logo-hide .right-nav {
@@ -160,6 +188,64 @@ nav .right-nav .input-box {
 .logo-hide .right-nav h5 {
     padding-left: 40px;
 }
+
+
+.offcanvas .main-ul {
+    color: var(--color);
+    background-color: var(--secondary) !important;
+}
+
+.offcanvas .main-ul li {
+    cursor: pointer;
+}
+
+.offcanvas ul:nth-child(2) li i {
+    color: var(--color) !important;
+}
+
+.offcanvas.offcanvas-end {
+    top: 0 !important;
+    right: 0 !important;
+}
+
+.single {
+    padding: 7px 1rem;
+    /* border-bottom: 1px solid #eee; */
+    cursor: pointer;
+}
+
+.notification li {
+    padding: 7px 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.img_cont {
+    width: 40px;
+    border-radius: 40px;
+    margin-right: 10px;
+    position: relative;
+    height: 40px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--secondary);
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.msg {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+/* message-box */
 
 /* header-end */
 
@@ -364,7 +450,7 @@ aside p {
 
 .card {
     margin-bottom: 1.563rem;
-    background-color: var(--white-clr);
+    background-color: var(--card);
     transition: all 0.5s ease-in-out;
     position: relative;
     border: 0rem solid transparent;
@@ -421,10 +507,6 @@ aside p {
     background-color: var(--secondary) !important;
 }
 
-/* .icon-box {
-    padding: 0 5px;
-    background-color: var(--secondary);
-} */
 .card-icon {
     width: 40px;
     height: 40px;
@@ -470,16 +552,14 @@ aside p {
     height: 130px;
     border: 13px solid gray;
     border-right-color: whitesmoke;
-    /* border-bottom-color: whitesmoke; */
     border-radius: 50%;
 }
 
-.circle span {
+.circle h4 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
-    /* transform: rotate(-40deg); */
 }
 
 .check-icon {
@@ -498,8 +578,7 @@ aside p {
 }
 
 #chart-container {
-    /* padding: 20px; */
-    background-color: white;
+    background-color: var(--card);
     padding: 10px;
     height: 300px;
     width: 100% !important;
@@ -603,4 +682,81 @@ aside p {
 
 .todo-text {
     font-size: 14px;
+}
+
+.table-responsive {
+    overflow-x: auto !important;
+}
+
+.active-projects .tbl-caption {
+    padding: 20px 16px;
+}
+
+.heading {
+    font-size: 1rem;
+}
+
+.table>:not(caption)>*>* {
+    background-color: var(--card) !important;
+}
+
+
+.table {
+    background-color: var(--card) !important;
+}
+
+table.dataTable {
+    font-size: 0.875rem;
+}
+
+.active-projects .dt-buttons .dt-button {
+    font-size: 13px !important;
+    color: var(--card-primary);
+    padding: 6px 12px;
+    border-radius: 0.25rem;
+    background: rgba(69, 43, 144, 0.1) !important;
+}
+
+#projects-tbl .sorting {
+    background: rgba(69, 43, 144, 0.1) !important;
+}
+
+.table th,
+.table td,
+table p {
+    border-color: #dad8d4;
+    padding: 0.9375rem 0.625rem;
+    color: var(--color) !important;
+}
+
+table.dataTable tbody td {
+    padding: 0.85rem 0.9375rem;
+}
+
+.avatar.avatar-md {
+    height: 1.875rem;
+    width: 1.875rem;
+}
+
+
+.tbl-progress-box {
+    display: flex;
+    align-items: center;
+}
+
+.tbl-progress-box .progress {
+    flex: 1;
+    margin-right: 5px;
+}
+
+.progress {
+    height: 5px;
+    background-color: #f6f6f6;
+    overflow: hidden;
+}
+
+.sorting_1 span {
+    display: inline-block;
+    border-radius: 5px;
+    padding: 2px 7px;
 }

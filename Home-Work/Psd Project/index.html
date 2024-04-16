@@ -22,7 +22,7 @@
 <body>
     <!-- header-section start  -->
     <header>
-        <nav class="d-flex justify-content-end">
+        <nav class="d-flex justify-content-end ">
             <div class="right-nav px-3 d-flex justify-content-between align-items-center">
                 <h5 class="m-0 ps-3">Dashboard</h5>
                 <div class="right-nav-search d-flex">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="nav-buttons">
                         <ul class="d-flex">
-                            <li><a href="#">
+                            <li><a href="#" onclick="changeColor(this)">
                                     <i class="fa-solid fa-moon"></i>
                                 </a></li>
                             <li class="ball-button">
@@ -113,12 +113,270 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#">
+                            <li><a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight">
                                     <i class="fa-solid fa-envelope"></i>
-                                </a></li>
-                            <li><a href="#">
+                                </a>
+                                <div class="offcanvas contact offcanvas-end" tabindex="-1" id="offcanvasRight"
+                                    aria-labelledby="offcanvasRightLabel">
+                                    <div class="offcanvas-body p-0">
+                                        <ul class="d-flex main-ul justify-content-between align-items-center p-3 ">
+                                            <li onclick="notificationShow('one')">Notes
+                                            </li>
+                                            <li onclick="notificationShow('two')">Alert</li>
+                                            <li onclick="notificationShow('three')">Chats</li>
+                                        </ul>
+                                        <div class="msg active" id="one">
+                                            <div
+                                                class="d-flex justify-content-between single align-items-center text-center">
+                                                <i class="fa-solid fa-ellipsis"></i>
+                                                <div>
+                                                    <h6 class="mb-0">Notification</h6>
+                                                    <p class="m-0">Show All</p>
+                                                </div>
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+
+                                            </div>
+                                            <ul class="notification">
+                                                <li>
+                                                    <h6>SEVER STATUS</h6>
+                                                    <div class="d-flex  align-items-center">
+                                                        <div class=" img_cont primary">kK</div>
+                                                        <div class="user_info">
+                                                            <span>David Nester Birthday</span>
+                                                            <p class="text-primary m-0">Today</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <h6>SEVER STATUS</h6>
+                                                    <div class="d-flex  align-items-center">
+                                                        <div class=" img_cont primary">kK</div>
+                                                        <div class="user_info">
+                                                            <span>David Nester Birthday</span>
+                                                            <p class="text-primary m-0">Today</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <h6>SEVER STATUS</h6>
+                                                    <div class="d-flex  align-items-center">
+                                                        <div class=" img_cont primary">kK</div>
+                                                        <div class="user_info">
+                                                            <span>David Nester Birthday</span>
+                                                            <p class="text-primary m-0">Today</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <h6>SEVER STATUS</h6>
+                                                    <div class="d-flex  align-items-center">
+                                                        <div class=" img_cont primary">kK</div>
+                                                        <div class="user_info">
+                                                            <span>David Nester Birthday</span>
+                                                            <p class="text-primary m-0">Today</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="msg " id="two">
+                                            <div
+                                                class="d-flex justify-content-between single align-items-center text-center">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <div>
+                                                    <h6 class="mb-0">Notes</h6>
+                                                    <p class="m-0">Add to new Notes</p>
+                                                </div>
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <div
+                                                        class="d-flex px-3 justify-content-between align-items-center bd-highlight">
+                                                        <div class="user_info">
+                                                            <span>New order placed..</span>
+                                                            <p>10 Aug 2020</p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <a href="javascript:void(0);"
+                                                                class="btn btn-primary btn-xs sharp me-1 d-inline-block"><i
+                                                                    class="fas fa-pencil-alt"></i></a>
+                                                            <a href="javascript:void(0);"
+                                                                class="btn btn-danger btn-xs sharp"><i
+                                                                    class="fa fa-trash d-inline-block"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div
+                                                        class="d-flex px-3 justify-content-between align-items-center bd-highlight">
+                                                        <div class="user_info">
+                                                            <span>New order placed..</span>
+                                                            <p>10 Aug 2020</p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <a href="javascript:void(0);"
+                                                                class="btn btn-primary btn-xs sharp me-1 d-inline-block"><i
+                                                                    class="fas fa-pencil-alt"></i></a>
+                                                            <a href="javascript:void(0);"
+                                                                class="btn btn-danger btn-xs sharp"><i
+                                                                    class="fa fa-trash d-inline-block"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div
+                                                        class="d-flex px-3 justify-content-between align-items-center bd-highlight">
+                                                        <div class="user_info">
+                                                            <span>New order placed..</span>
+                                                            <p>10 Aug 2020</p>
+                                                        </div>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <a href="javascript:void(0);"
+                                                                class="btn btn-primary btn-xs sharp me-1 d-inline-block"><i
+                                                                    class="fas fa-pencil-alt"></i></a>
+                                                            <a href="javascript:void(0);"
+                                                                class="btn btn-danger btn-xs sharp"><i
+                                                                    class="fa fa-trash d-inline-block"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="msg" id="three">
+                                            <div
+                                                class="d-flex justify-content-between single align-items-center text-center">
+                                                <i class="fa-solid fa-ellipsis"></i>
+                                                <div>
+                                                    <h6 class="mb-0">Chat List</h6>
+                                                    <p class="m-0">Show All</p>
+                                                </div>
+                                                <i class="fa-solid fa-magnifying-glass"></i>
+
+                                            </div>
+                                            <ul class="notification">
+                                                <li>
+                                                    <h6>SEVER STATUS</h6>
+                                                    <div class="d-flex  align-items-center">
+                                                        <div class=" img_cont primary">kK</div>
+                                                        <div class="user_info">
+                                                            <span>David Nester Birthday</span>
+                                                            <p class="text-primary m-0">Today</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <h6>SEVER STATUS</h6>
+                                                    <div class="d-flex  align-items-center">
+                                                        <div class=" img_cont primary">kK</div>
+                                                        <div class="user_info">
+                                                            <span>David Nester Birthday</span>
+                                                            <p class="text-primary m-0">Today</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <h6>SEVER STATUS</h6>
+                                                    <div class="d-flex  align-items-center">
+                                                        <div class=" img_cont primary">kK</div>
+                                                        <div class="user_info">
+                                                            <span>David Nester Birthday</span>
+                                                            <p class="text-primary m-0">Today</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <h6>SEVER STATUS</h6>
+                                                    <div class="d-flex  align-items-center">
+                                                        <div class=" img_cont primary">kK</div>
+                                                        <div class="user_info">
+                                                            <span>David Nester Birthday</span>
+                                                            <p class="text-primary m-0">Today</p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="#" data-bs-toggle="dropdown">
                                     <i class="fa-solid fa-calendar-days"></i>
-                                </a></li>
+                                </a>
+                                <ul class="ball-ul position-absolute shadow dropdown-menu">
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="https://yashadmin.dexignzone.com/xhtml/images/avatar/1.jpg" alt=""
+                                                class="img-fluid rounded-circle" width="50px">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Dr sultads Send you Photo</h6>
+                                            <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="https://yashadmin.dexignzone.com/xhtml/images/user.jpg" alt=""
+                                                class="img-fluid rounded-circle" width="50px">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Resport created successfully</h6>
+                                            <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="https://yashadmin.dexignzone.com/xhtml/images/avatar/1.jpg" alt=""
+                                                class="img-fluid rounded-circle" width="50px">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Dr sultads Send you Photo</h6>
+                                            <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="https://yashadmin.dexignzone.com/xhtml/images/user.jpg" alt=""
+                                                class="img-fluid rounded-circle" width="50px">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Reminder : Treatment Time!</h6>
+                                            <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="https://yashadmin.dexignzone.com/xhtml/images/avatar/1.jpg" alt=""
+                                                class="img-fluid rounded-circle" width="50px">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Dr sultads Send you Photo</h6>
+                                            <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="https://yashadmin.dexignzone.com/xhtml/images/avatar/1.jpg" alt=""
+                                                class="img-fluid rounded-circle" width="50px">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Dr sultads Send you Photo</h6>
+                                            <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="img-box">
+                                            <img src="https://yashadmin.dexignzone.com/xhtml/images/avatar/1.jpg" alt=""
+                                                class="img-fluid rounded-circle" width="50px">
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Dr sultads Send you Photo</h6>
+                                            <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
                             <li><a href="#">
                                     <img src="https://yashadmin.dexignzone.com/xhtml/images/user.jpg" alt=""
                                         class="img-fluid">
@@ -346,7 +604,7 @@
     <!-- aside end here -->
     <!-- center-section started here  -->
     <section class="main-wrapper  ms-auto">
-        <div class="container-fluid p-4">
+        <div class="container-fluid p-4 pb-0">
             <div class="row">
                 <div class="col-xl-6 col-sm-12">
                     <div class="row">
@@ -493,7 +751,7 @@
                         <div class="card-body d-flex flex-column  align-items-center">
                             <div class="circle text-center mb-4 position-relative">
                                 <div class="circle-box"> </div>
-                                <span class="fw-bold fs-5">75%</span>
+                                <h4 class="fw-bold fs-5">75%</h4>
                                 <div class="check-icon shadow">
                                     <i class="fa-solid fa-check"></i>
                                 </div>
@@ -512,8 +770,8 @@
                 <div class="col-xl-8">
                     <div class="card">
                         <div
-                            class="d-flex flex-wrap justify-content-center  justify-content-sm-between align-items-center p-3 pb-0">
-                            <b class="fs-5 fw-medium text-center text-sm-start">Project Overview</b>
+                            class="d-flex pb-3 flex-wrap justify-content-center  justify-content-sm-between align-items-center p-3 pb-0">
+                            <h4 class="fs-5 fw-medium text-center text-sm-start">Project Overview</h4>
                             <div class="btns">
                                 <button class="btn btn-primary px-3 py-1">Week</button>
                                 <button class="btn btn-primary px-3 py-1">Month</button>
@@ -547,7 +805,7 @@
                 </div>
                 <div class="col-xl-4">
                     <div class="card position-relative overflow-hidden">
-                        <div class="todo-top bg-white position-absolute p-3 pb-0  d-flex justify-content-between">
+                        <div class="todo-top  position-absolute p-3 pb-0  d-flex justify-content-between">
                             <h6 class="m-0">My To Do Items</h6>
                             <p>
                                 <span>View-All</span>
@@ -661,8 +919,572 @@
                         </ul>
                     </div>
                 </div>
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="table-responsive active-projects">
+                                <div class="tbl-caption d-flex justify-content-between align-items-center">
+                                    <h4 class="heading mb-0">Active Projects</h4>
+                                    <div class="dt-buttons"><button
+                                            class="dt-button buttons-excel buttons-html5 btn btn-sm border-0"
+                                            type="button"><span><i class="fa-solid fa-file-excel"></i> Export
+                                                Report</span></button>
+                                    </div>
+                                </div>
+                                <div id="projects-tbl_wrapper" class="dataTables_wrapper no-footer">
+                                    <table id="projects-tbl" class="table mb-0 w-100 dataTable no-footer">
+                                        <thead>
+                                            <tr>
+                                                <th class="sorting" rowspan="1" colspan="1" style="width: 166.578px;">
+                                                    Project Name</th>
+                                                <th class="sorting" rowspan="1" colspan="1" style="width: 236.891px;">
+                                                    Project Lead</th>
+                                                <th class="sorting" rowspan="1" colspan="1" style="width: 119.688px;">
+                                                    Progress</th>
+                                                <th class="sorting" rowspan="1" colspan="1" style="width: 124.062px;">
+                                                    Assignee</th>
+                                                <th class="sorting sorting_desc" rowspan="1" colspan="1"
+                                                    style="width: 132.078px;">Status</th>
+                                                <th class="sorting" rowspan="1" colspan="1" style="width: 133.453px;">
+                                                    Due Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd">
+                                                <td class="">Bender Project</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <p class="mb-0 ms-4">Oliver Noah</p>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="tbl-progress-box">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-danger"
+                                                                style="width:30%; height:5px; border-radius:4px;"
+                                                                role="progressbar"></div>
+                                                        </div>
+                                                        <span class="text-danger">30%</span>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="avatar-list avatar-list-stacked">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0 sorting_1">
+                                                    <span
+                                                        style="background-color: #ffdede; color: #FF5E5E;">Pending</span>
+                                                </td>
+                                                <td>
+                                                    <span>06 Sep 2021</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="even">
+                                                <td class="">Mercury</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic2.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <p class="mb-0 ms-4">Oliver Noah</p>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="tbl-progress-box">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-danger"
+                                                                style="width:30%; height:5px; border-radius:4px;"
+                                                                role="progressbar"></div>
+                                                        </div>
+                                                        <span class="text-danger">30%</span>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="avatar-list avatar-list-stacked">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0 sorting_1">
+                                                    <span
+                                                        style="background-color: #ffdede; color: #FF5E5E;">Pending</span>
+                                                </td>
+                                                <td>
+                                                    <span>06 Sep 2021</span>
+                                                </td>
+                                            </tr>
+                                            <tr class=" odd">
+                                                <td class="">Batman</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic777.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <p class="mb-0 ms-4">Liam Risher</p>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="tbl-progress-box">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-primary"
+                                                                style="width:53%; height:5px; border-radius:4px;"
+                                                                role="progressbar"></div>
+                                                        </div>
+                                                        <span class="text-primary">53%</span>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="avatar-list avatar-list-stacked">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic777.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0 sorting_1">
+                                                    <span
+                                                        style="background-color: rgba(69, 43, 144, 0.1); color: #452B90;">Inprogress</span>
+                                                </td>
+                                                <td>
+                                                    <span>06 Sep 2021</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="even">
+                                                <td class="">Bigfish</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic888.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <p class="mb-0 ms-4">Donald Benjamin</p>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="tbl-progress-box">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-danger"
+                                                                style="width:30%; height:5px; border-radius:4px;"
+                                                                role="progressbar"></div>
+                                                        </div>
+                                                        <span class="text-danger">30%</span>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="avatar-list avatar-list-stacked">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0 sorting_1">
+                                                    <span
+                                                        style="background-color: rgba(69, 43, 144, 0.1); color: #452B90;">Inprogress</span>
+                                                </td>
+                                                <td>
+                                                    <span>06 Sep 2021</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="odd">
+                                                <td class="">Casanova</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic999.jpg"
+                                                            class="avatar avatar-md rounded-circle" alt="">
+                                                        <p class="mb-0 ms-4">William Risher</p>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="tbl-progress-box">
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-primary"
+                                                                style="width:53%; height:5px; border-radius:4px;"
+                                                                role="progressbar"></div>
+                                                        </div>
+                                                        <span class="text-primary">53%</span>
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0">
+                                                    <div class="avatar-list avatar-list-stacked">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                            class="avatar img-fluid avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                            class="avatar img-fluid avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                            class="avatar img-fluid avatar-md rounded-circle" alt="">
+                                                        <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                            class="avatar img-fluid avatar-md rounded-circle" alt="">
+                                                    </div>
+                                                </td>
+                                                <td class="pe-0 sorting_1">
+                                                    <span
+                                                        style="background-color: rgba(69, 43, 144, 0.1); color: #452B90;">Inprogress</span>
+                                                </td>
+                                                <td>
+                                                    <span>06 Sep 2021</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-xxl-8">
+                    <div class="animate-box card p-3 pb-0">
+                        <div class="animated-nav d-flex pb-2 justify-content-between align-items-center">
+                            <h5 class="fs-6">Running Projects</h5>
+                            <div>
+                                <button class="btn text-white py-1" style="background-color: #452B90;">View All</button>
+                            </div>
+                        </div>
+                        <div id="carouselExampleSlidesOnly" class="carousel slide text-lg-start text-center"
+                            data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-sm-6">
+                                            <div class="card p-3">
+                                                <div class="animate-img">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/p3.gif"
+                                                        alt="" class="img-fluid rounded-3" height="140px">
+                                                </div>
+                                                <h5 class="mb-0 mt-2">
+                                                    <a href="#" style="font-size: 17px;">Development
+                                                        planning</a>
+                                                </h5>
+                                                <div class="avatar-list my-2 avatar-list-stacked">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <span class="ms-4">21+ team</span>
+                                                </div>
+                                                <div
+                                                    class="card-bottom d-flex justify-content-between align-items-center">
+                                                    <div class="card-left">
+                                                        <h6 class="mb-0" style="font-size: 14px;">Due Date</h6>
+                                                        <h6 class="mb-0" style="font-size: 14px;">06 Sep 2021</h6>
+                                                    </div>
+                                                    <div class="card-right">
+                                                        <button class="btn btn-warning py-1"
+                                                            style="background-color: #d3edf5; color: #58bad7; font-size: 13px;">Inprogress</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-6">
+                                            <div class="card p-3">
+                                                <div class="animate-img">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/p.gif"
+                                                        alt="" class="img-fluid rounded-3" height="140px">
+                                                </div>
+                                                <h5 class="mb-0 mt-2">
+                                                    <a href="#" style="font-size: 17px;">Development
+                                                        planning</a>
+                                                </h5>
+                                                <div class="avatar-list my-2 avatar-list-stacked">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <span class="ms-4">21+ team</span>
+                                                </div>
+                                                <div
+                                                    class="card-bottom d-flex justify-content-between align-items-center">
+                                                    <div class="card-left">
+                                                        <h6 class="mb-0" style="font-size: 14px;">Due Date</h6>
+                                                        <h6 class="mb-0" style="font-size: 14px;">06 Sep 2021</h6>
+                                                    </div>
+                                                    <div class="card-right">
+                                                        <button class="btn btn-warning py-1"
+                                                            style="background-color: #ffdede; color: #FF5E5E; font-size: 13px;">Pending</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-sm-6">
+                                            <div class="card p-3">
+                                                <div class="animate-img">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/p1.gif"
+                                                        alt="" class="img-fluid rounded-3" height="140px">
+                                                </div>
+                                                <h5 class="mb-0 mt-2">
+                                                    <a href="#" style="font-size: 17px;">Development
+                                                        planning</a>
+                                                </h5>
+                                                <div class="avatar-list my-2 avatar-list-stacked">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <span class="ms-4">21+ team</span>
+                                                </div>
+                                                <div
+                                                    class="card-bottom d-flex justify-content-between align-items-center">
+                                                    <div class="card-left">
+                                                        <h6 class="mb-0" style="font-size: 14px;">Due Date</h6>
+                                                        <h6 class="mb-0" style="font-size: 14px;">06 Sep 2021</h6>
+                                                    </div>
+                                                    <div class="card-right">
+                                                        <button class="btn btn-warning py-1"
+                                                            style="background-color: #ffdede; color: #FF5E5E; font-size: 13px;">Pending</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-4 col-lg-4 col-sm-6">
+                                            <div class="card p-3">
+                                                <div class="animate-img">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/p2.gif"
+                                                        alt="" class="img-fluid rounded-3" height="140px">
+                                                </div>
+                                                <h5 class="mb-0 mt-2">
+                                                    <a href="#" style="font-size: 17px;">FrontEnd
+                                                        Development</a>
+                                                </h5>
+                                                <div class="avatar-list my-2 avatar-list-stacked">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <span class="ms-4">21+ team</span>
+                                                </div>
+                                                <div
+                                                    class="card-bottom d-flex justify-content-between align-items-center">
+                                                    <div class="card-left">
+                                                        <h6 class="mb-0" style="font-size: 14px;">Due Date</h6>
+                                                        <h6 class="mb-0" style="font-size: 14px;">06 Sep 2021</h6>
+                                                    </div>
+                                                    <div class="card-right">
+                                                        <button class="btn btn-warning py-1"
+                                                            style="background-color: #ffdede; color: #FF5E5E; font-size: 13px;">Pending</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-lg-4 col-sm-6">
+                                            <div class="card p-3">
+                                                <div class="animate-img">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/p3.gif"
+                                                        alt="" class="img-fluid rounded-3" height="140px">
+                                                </div>
+                                                <h5 class="mb-0 mt-2">
+                                                    <a href="#" style="font-size: 17px;">Desinging
+                                                        planning</a>
+                                                </h5>
+                                                <div class="avatar-list my-2 avatar-list-stacked">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <span class="ms-4">21+ team</span>
+                                                </div>
+                                                <div
+                                                    class="card-bottom d-flex justify-content-between align-items-center">
+                                                    <div class="card-left">
+                                                        <h6 class="mb-0" style="font-size: 14px;">Due Date</h6>
+                                                        <h6 class="mb-0" style="font-size: 14px;">06 Sep 2021</h6>
+                                                    </div>
+                                                    <div class="card-right">
+                                                        <button class="btn btn-warning py-1"
+                                                            style="background-color: #d3edf5; color: #58bad7; font-size: 13px;">Inprogress</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-lg-4 col-sm-6">
+                                            <div class="card p-3">
+                                                <div class="animate-img">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/p1.gif"
+                                                        alt="" class="img-fluid rounded-3" height="140px">
+                                                </div>
+                                                <h5 class="mb-0 mt-2">
+                                                    <a href="#" style="font-size: 17px;">Development
+                                                        planning</a>
+                                                </h5>
+                                                <div class="avatar-list my-2 avatar-list-stacked">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <span class="ms-4">21+ team</span>
+                                                </div>
+                                                <div
+                                                    class="card-bottom d-flex justify-content-between align-items-center">
+                                                    <div class="card-left">
+                                                        <h6 class="mb-0" style="font-size: 14px;">Due Date</h6>
+                                                        <h6 class="mb-0" style="font-size: 14px;">06 Sep 2021</h6>
+                                                    </div>
+                                                    <div class="card-right">
+                                                        <button class="btn btn-warning py-1"
+                                                            style="background-color: #ffdede; color: #FF5E5E; font-size: 13px;">Pending</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-lg-4 col-sm-6">
+                                            <div class="card mb p-3">
+                                                <div class="animate-img">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/p.gif"
+                                                        alt="" class="img-fluid rounded-3" height="140px">
+                                                </div>
+                                                <h5 class="mb-0 mt-2">
+                                                    <a href="#" style="font-size: 17px;">FrontEnd
+                                                        Development</a>
+                                                </h5>
+                                                <div class="avatar-list my-2 avatar-list-stacked">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <span class="ms-4">21+ team</span>
+                                                </div>
+                                                <div
+                                                    class="card-bottom d-flex justify-content-between align-items-center">
+                                                    <div class="card-left">
+                                                        <h6 class="mb-0" style="font-size: 14px;">Due Date</h6>
+                                                        <h6 class="mb-0" style="font-size: 14px;">06 Sep 2021</h6>
+                                                    </div>
+                                                    <div class="card-right">
+                                                        <button class="btn btn-warning py-1"
+                                                            style="background-color: #d3edf5; color: #58bad7; font-size: 13px;">Inprogress</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-lg-4 col-sm-6">
+                                            <div class="card p-3">
+                                                <div class="animate-img">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/p2.gif"
+                                                        alt="" class="img-fluid rounded-3" height="140px">
+                                                </div>
+                                                <h5 class="mb-0 mt-2">
+                                                    <a href="#" style="font-size: 17px;">Development
+                                                        planning</a>
+                                                </h5>
+                                                <div class="avatar-list my-2 avatar-list-stacked">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <span class="ms-4">21+ team</span>
+                                                </div>
+                                                <div
+                                                    class="card-bottom d-flex justify-content-between align-items-center">
+                                                    <div class="card-left">
+                                                        <h6 class="mb-0" style="font-size: 14px;">Due Date</h6>
+                                                        <h6 class="mb-0" style="font-size: 14px;">06 Sep 2021</h6>
+                                                    </div>
+                                                    <div class="card-right">
+                                                        <button class="btn btn-warning py-1"
+                                                            style="background-color: #ffdede; color: #FF5E5E; font-size: 13px;">Pending</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-lg-4 col-sm-6">
+                                            <div class="card p-3">
+                                                <div class="animate-img">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/p1.gif"
+                                                        alt="" class="img-fluid rounded-3" height="140px">
+                                                </div>
+                                                <h5 class="mb-0 mt-2">
+                                                    <a href="#" style="font-size: 17px;">Development
+                                                        planning</a>
+                                                </h5>
+                                                <div class="avatar-list my-2 avatar-list-stacked">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic555.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic666.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <img src="https://yashadmin.dexignzone.com/xhtml/images/contacts/pic1.jpg"
+                                                        class="avatar avatar-md rounded-circle" alt="">
+                                                    <span class="ms-4">21+ team</span>
+                                                </div>
+                                                <div
+                                                    class="card-bottom d-flex justify-content-between align-items-center">
+                                                    <div class="card-left">
+                                                        <h6 class="mb-0" style="font-size: 14px;">Due Date</h6>
+                                                        <h6 class="mb-0" style="font-size: 14px;">06 Sep 2021</h6>
+                                                    </div>
+                                                    <div class="card-right">
+                                                        <button class="btn btn-warning py-1"
+                                                            style="background-color: #ffdede; color: #FF5E5E; font-size: 13px;">Pending</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <p class="m-0 border-top text-center py-2" style="font-size: 14px;">Copyright © Developed by <span
+                    style="color: #452B90;">DexignZone
+                </span>2024</p>
     </section>
     <!-- center-section end here  -->
 </body>
@@ -707,6 +1529,29 @@
     }
     function ball_show() {
         document.querySelector(".ball-ul").classList.toggle("ball-hide")
+    }
+
+    // change-color 
+    function changeColor(elm) {
+        let item = elm.querySelector("i")
+        if (item.classList[1] == "fa-moon") {
+            item.classList.replace("fa-moon", "fa-sun")
+            document.body.classList.add("dark")
+        } else {
+            item.classList.replace("fa-sun", "fa-moon")
+            document.body.classList.remove("dark")
+        }
+    }
+
+    function notificationShow(elm) {
+        let allList = document.querySelectorAll(".msg")
+        allList.forEach(msg => {
+            if (msg.classList.contains("active")) {
+                msg.classList.remove("active")
+            }
+        })
+        let item = document.getElementById(elm)
+        item.classList.add("active")
     }
 </script>
 <script>
