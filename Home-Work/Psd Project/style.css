@@ -64,10 +64,32 @@ a {
 .form-control {
     background: var(--header-icon-bg) !important;
     color: var(--color) !important;
-    /* border: 1px solid var(--border) !important; */
 }
 
 /* header-start  */
+.preloder {
+    display: block;
+}
+
+.preloder span {
+    background-color: var(--secondary);
+}
+
+.preloder .logo-abbr {
+    animation: rotate 2s infinite linear;
+    transform-origin: center;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 nav {
     height: 60px;
     color: var(--black-clr);
@@ -197,6 +219,7 @@ nav .right-nav .input-box {
 
 .offcanvas .main-ul li {
     cursor: pointer;
+    padding: 10px;
 }
 
 .offcanvas ul:nth-child(2) li i {
@@ -210,7 +233,6 @@ nav .right-nav .input-box {
 
 .single {
     padding: 7px 1rem;
-    /* border-bottom: 1px solid #eee; */
     cursor: pointer;
 }
 
@@ -243,6 +265,10 @@ nav .right-nav .input-box {
 
 .active {
     display: block;
+}
+
+.header-profile2 .dropdown-menu .dropdown-item {
+    padding: 0.6rem 1.25rem;
 }
 
 /* message-box */
@@ -725,7 +751,6 @@ table.dataTable {
 .table td,
 table p {
     border-color: #dad8d4;
-    padding: 0.9375rem 0.625rem;
     color: var(--color) !important;
 }
 

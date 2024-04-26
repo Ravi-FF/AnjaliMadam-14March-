@@ -1,0 +1,145 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+}
+
+/* header-style-start  */
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 70px;
+    box-shadow: 0px 1px 10px #999;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: black;
+    transition: 0.5s;
+    letter-spacing: 1px;
+}
+
+nav ul li a:hover {
+    color: #fda085
+}
+
+nav .logo {
+    font-family: cursive;
+    font-size: 30px;
+}
+
+/* header-style-end  */
+
+/* welcome-section start  */
+main {
+    position: relative;
+}
+
+.welcome {
+    /* padding: 0 50px; */
+    width: 90%;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome .welcome-left,
+.welcome .welcome-right {
+    flex-basis: 50%;
+}
+
+.welcome .welcome-left h1 {
+    margin: 15px 0;
+    word-spacing: 10px;
+    font-size: 70px;
+}
+
+.welcome .welcome-left button {
+    padding: 15px;
+    border: none;
+    color: white;
+    margin-top: 20px;
+    background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+
+.welcome .welcome-left h2 {
+    color: #f06d06;
+}
+
+.welcome .welcome-left p {
+    color: gray;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.welcome-right img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* welcome-section end  */
+@media screen and (max-width:1250px) {
+    .welcome .welcome-left h1 {
+        font-size: 50px;
+    }
+
+    .welcome .welcome-left p {
+        font-size: 15px;
+    }
+
+}
+
+@media screen and (max-width:992px) {
+    nav ul {
+        gap: 15px;
+    }
+
+    .welcome {
+        padding-top: 80px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .welcome .welcome-left,
+    .welcome .welcome-right {
+        flex-basis: 100%;
+    }
+
+    .welcome-right img {
+        width: 50%;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+
+    nav ul,
+    .icons {
+        display: none;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .welcome-right img {
+        width: 80%;
+    }
+
+    .welcome .welcome-left h1 {
+        font-size: 40px;
+    }
+}
