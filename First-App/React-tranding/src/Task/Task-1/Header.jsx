@@ -1,9 +1,10 @@
 import React from 'react'
 import "./Task-1.css"
-
+import img from "./img/welcomeImg.png"
 export default function Header() {
     return (
         <header>
+            <img src={img} alt="" />
             <nav>
                 <h1 className="logo">Shivaa.</h1>
                 <ul>
