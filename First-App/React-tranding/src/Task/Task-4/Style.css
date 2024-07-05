@@ -1,0 +1,91 @@
+* {
+    font-family: cursive;
+    text-transform: capitalize;
+}
+
+.Task-Container {
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.Task-Container h1 {
+
+    text-align: center;
+}
+
+.Task-Container select,
+.Task-Container input {
+    padding: .375rem 2.25rem .375rem .75rem;
+    margin-right: 15px;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+.Task-Container .input-boxes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Task-Container .btn {
+    cursor: pointer;
+    margin: 0;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    background-color: #0d6efd;
+    color: white;
+}
+
+.Task-Container table {
+    border-collapse: collapse;
+    border: 1px solid #ced4da;
+    margin-top: 50px;
+}
+
+.Task-Container th,
+td {
+    padding: 5px 0;
+}
+
+.btn-edit {
+    background-color: #ffc107 !important;
+}
+
+.btn-delete {
+    background-color: #dc3545 !important;
+}
+
+.btn-complete {
+    background-color: #198754 !important;
+}
+
+.completedData {
+    background-color: gainsboro;
+}
+
+.accordion {
+    margin-top: 50px;
+    padding: 10px;
+    text-align: start;
+}
+
+.accordion button {
+    padding: 8px;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.accordion-btn {
+    background-color: navy;
+    color: white;
+
+}
