@@ -10,3 +10,84 @@ localstorage.setItem("key", value)
 
 if we want to retrive data from localstorage we can use below method 
 localstorage.getItem("key")
+
+
+useLocation():useLocation is one of the best hook which is provided by react-router-dom
+
+which is used to handle browser path location
+
+we can access browser path,search name (?name="aaa),hash (#section),state..
+
+useing of useLocation object we can access below things
+
+location.pathname..2
+location.search
+location.hash
+location.state
+
+
+
+-------------------------------------------------------------Redux--------------------------------------------------------
+state management : 
+local state : local state mange by useState()  (hook)
+props: when we wan to pass or suply state between differrent different componant at that time we use props there .
+
+                                       App
+                                       |
+                                       V
+-------------------------------------------------------------------------------                                       
+|                                                |
+V                                                V
+com1                                            com4                                                  |
+|                                                |
+com2                                            com5
+|                                                 | 
+com3                                             com6
+
+contextAPI: which is applicable only on specific tree part
+-----------------------------------------------------------
+REDUX : Redux a goble state management javascript library
+which is store all state at single location and its called (store)
+
+key points :
+1) store :
+2) action:
+3) reducers : one kind of function which manage actions
+4) dispatching / getting state :
+latest version of redux is redux toolkit
+
+=> createSlice
+=> configureSlice
+
+
+-----------------------------------------
+
+useReducer: is a hook which is use for state management.
+
+there is many thing similar between useState and useReducer
+useState use for simple local state management.
+useReducer which is accept 2 perameters:
+
+const [var,function] = useState (initialValue):
+            Vs
+
+const[var,dispatch] = useReducer(reduer,initialValue)
+                         |
+                         V
+                         reducer (currentState,action){
+                             
+                         }
+
+
+-----------------------------------------------------------------------------
+
+Lazy loading : which is main technique
+   which is used to handle component loading time 
+
+   it ignore heavy component and loading requiure component first 
+
+   Lazyloading mainly use for component performance improvement
+
+   which is contain 2 key points
+   React.Lazy() : which is use to import component
+   Suspence : it handle code here till another component is loading.

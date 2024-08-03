@@ -13,7 +13,7 @@ import MapCrud from "./Mapcrud/MapCrud"
 import AllHookes from "./Hookes/AllHookes"
 import FirstPage from "./Task/Task-4/FirstPage"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Home from "./ReactRouter/Home"
+// import Home from "./ReactRouter/Home"
 import About from "./ReactRouter/About"
 import Blog from "./ReactRouter/Blog"
 import HomeNevi from "./ReactRouter/UseNevigator/HomeNevi"
@@ -30,6 +30,11 @@ import PeraPage2 from "./ReactRouter/UsePerams/UseperaEx1/PeraPage2"
 import MaterialUiExample from "./MaterialUI/MaterialUiExample"
 import FireRouter from "./FireBaseReactjs/FireBaseProject/FireRouter.jsx"
 import ReduxRoute from "./Redux/ReduxRoute.jsx"
+import UseMemoExapmle from "./Hookes/Usememo/UseMemoExapmle.jsx"
+import UseCallBackAll from "./Hookes/UseCallback/UseCallBackAll.jsx"
+import UseReducer from "./Hookes/UseReducer.jsx"
+import Home from "./LazyLoading/Home.jsx"
+import CostomHookEx1 from "./Hookes/CostomHook/CostomHookEx1.jsx"
 
 // import "./App.css"
 function App() {
@@ -49,7 +54,7 @@ function App() {
       {/* <MapCrud /> */}
       {/* <AllHookes /> */}
       {/* <FirstPage /> */}
-      <FireRouter></FireRouter>
+      {/* <FireRouter></FireRouter> */}
       {/* <MaterialUiExample /> */}
       {/* <BrowserRouter>
         <Routes>
@@ -73,6 +78,11 @@ function App() {
       {/* </Routes> */}
       {/* </BrowserRouter> */}
       {/* <ReduxRoute></ReduxRoute> */}
+      {/* <UseMemoExapmle></UseMemoExapmle> */}
+      {/* <UseCallBackAll></UseCallBackAll> */}
+      {/* <UseReducer></UseReducer>  */}
+      {/* <Home></Home> */}
+      <CostomHookEx1></CostomHookEx1>
     </>
   )
 }
